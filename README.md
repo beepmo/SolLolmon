@@ -94,3 +94,13 @@ SolLolmon can be built into a discord bot to help the user run Question of the S
 **On tick**, send the pdf in a discord server in step 3.  
 **Any time**, let any server member perform these actions through commands on discord.
 
+## User Stories
+
+### Phase 0
+As a user, I want to add a solution to a question.
+
+As a user, I want to receive questions via email on tick.
+
+As a user, I want to see the number of unsealed questions available.
+
+As a user, I want to export a data folder containing all question and solution .tex files with their associated fields in metadata for a ritual I'm in.
