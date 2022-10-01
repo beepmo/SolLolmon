@@ -77,9 +77,13 @@ In practical use, a tick will be a day. On each tick, for each ritual,
    2. create solution instances
 2. Allow user to edit fields in existing questions and solutions
 3. Allow user to search for question and solution classes by any field
-4. Store questions and solutions by Ritual, allowing multiple users in the same Ritual to access the Ritual.
+4. Store questions and solutions by ritual, allowing multiple users in the same ritual to access the ritual
+5. Create ritual with
+   1. users
+   2. questions and solutions imported by nutrition from other rituals
+6. Add user
 
-***Rituals should be exported such that other projects, such as discord bots, can build on Rituals initiated in SolLolmon.***
+***Rituals should be exported such that other projects, such as discord bots, can build on rituals initiated in SolLolmon.***
 
 <p align="right">
   <img src="https://i.pinimg.com/originals/05/5c/55/055c550ac2ddeabc7671489e05795114.jpg" alt="Solomon's seal." height="300"/>
@@ -92,7 +96,7 @@ In practical use, a tick will be a day. On each tick, for each ritual,
 Possibly outside the scope of 210 project,
 SolLolmon can be built into a discord bot to help the user run Question of the Sol for a group.
 **On tick**, send the pdf in a discord server in step 3.  
-**Any time**, let any server member perform these actions through commands on discord.
+**Any time**, let any server member perform 1-3 through commands on discord.
 
 ## User Stories
 
