@@ -101,10 +101,10 @@ SolLolmon can be built into a discord bot to help the user run Question of the S
 ## User Stories
 
 ### Phase 0
-As a user, I want to add a solution to a question.
+As a user, I want to import bare-bones .tex files and let SolLolmon add a ritual pre-amble.
 
-As a user, I want to receive questions via email on tick.
+As a user, I want to add any number of solutions to a question.
 
-As a user, I want to see the number of unsealed questions available.
+As a user, I want to count the number of questions in a ritual: sealed, has solution, etc.
 
-As a user, I want to export a data folder containing all question and solution .tex files with their associated fields in metadata for a ritual I'm in.
+As a user, I want to export a .zip file containing all question and solution .tex files for a ritual.
