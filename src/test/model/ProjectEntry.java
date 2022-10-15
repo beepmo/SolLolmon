@@ -2,7 +2,7 @@ package model;
 
 public class ProjectEntry extends WriteUp {
 
-    protected
+    protected Project project;
 
     public ProjectEntry(User user) {
         super(user);

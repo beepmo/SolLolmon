@@ -4,21 +4,16 @@ import java.util.ArrayList;
 
 public class Quest extends WriteUp {
 
+    public Project project;
     private int seal;
     // number of sols for which this question is chosen
     private ArrayList<Soln> solutions;
 
-    public Quest(User user) {
+    public Quest(User user, Project p) {
         super(user);
         solutions = new ArrayList<Soln>();
+        this.project = p;
         seal = 0;
-    }
-
-    @Override
-    // EFFECTS: add project and writeup fields in file/String
-    // MODIFIES: this
-    public void postPreamble() {
-
     }
 
     public void addSoln(Soln s) {

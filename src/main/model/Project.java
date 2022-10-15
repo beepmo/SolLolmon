@@ -1,24 +1,41 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
-public interface Project {
-    default Quest chooseQuestion() {
+public class Project {
+
+    protected static int tick = 1;
+    protected java.util.Date birthdate;
+    protected String project;
+    public int day;
+    protected HashSet<String> nutrition;
+    protected List<Quest> store;
+    protected Quest yesterQuest;
+
+    // EFFECTS: constructs a new ritual
+    public Project(String project) {
+        this.project = project;
+        this.day = 1;
+        this.store = new ArrayList<>();
+        this.birthdate = new Date();
+    }
+
+    //TODO: print question, post prev. soln if any
+    public Quest chooseQuestion() {
         return null;
     }
 
-    default List<Soln> getPrevSoln() {
+    public List<Soln> getPrevSoln() {
         return null;
     }
 
-    /* EFFECTS: increments sol at specified interval
-     */
+    // EFFECTS: add project and writeup fields in file/String
     // MODIFIES: this
-    default void tick() {
+    public void postPreamble() {
     }
 
-    // EFFECTS: for a chosen question, annotates it with day, remembers to post solution
-    // MODIFIES: this
-    default void seal(Quest q) {
-    }
+
 }

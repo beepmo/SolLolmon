@@ -1,6 +1,6 @@
 package model;
 
-public class Soln extends WriteUp {
+public class Soln extends Pro {
     private Quest question;
 
     public Soln(Quest question,User user) {

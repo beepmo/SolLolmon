@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public abstract class WriteUp {
-    File tex;
+    String tex;
     User contributor;
     java.util.Date dateAdded;
     List<String> nutrition;
@@ -13,12 +13,15 @@ public abstract class WriteUp {
 
     // EFFECTS: construct writeup with date, contributor
     public WriteUp(User user) {
-        super();
+        this.dateAdded = new Date();
         this.contributor = user;
     }
 
     // EFFECTS: create writeup (likely String or tex File from console)
-    public void scanTex() {}
+    //TODO get string
+    public void scanTex(String s) {
+        this.tex = s;
+    }
 
     // EFFECTS: check basic elements for tex file to compile/valid writeup
     //TODO this will always return true for now

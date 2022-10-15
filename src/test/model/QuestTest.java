@@ -11,13 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class QuestTest {
 
     User u1;
+    Project p1;
     Quest q1;
     Soln s1;
 
     @BeforeEach
     void runBefore() {
         u1 = new User("Smon");
-        q1 = new Quest(u1);
+        q1 = new Quest(u1,p1);
         s1 = new Soln(q1,u1);
     }
 
