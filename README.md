@@ -5,7 +5,7 @@ SolLolmon is an aide to train for problem solving through question of the day.
 
 ### The Question of Sol
 Sol means day, a daily ration. 
-For people who train in problem-solving, including a practice problem in a sol
+Including a practice problem in a sol
 — especially when the sol contains stress — 
 helps a lot over the days.
 This ritual is called Question of the Sol. 
@@ -23,7 +23,7 @@ they must attempt the daily question with perseverance,
 build up understanding with the server regarding skill level of the broad member body and themself,
 and engage others in conversation.
 
-This project aims to automate the sacrifice's duty and share it with a team, maintaining organization and transparency. 
+This project aims to automate the sacrifice's task and share it with a team, maintaining organization and transparency. 
 
 ## Project Proposal
 
