@@ -1,16 +1,15 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
+import exceptions.NoMatchingResultException;
+
+import java.util.*;
 
 public class Project {
 
     protected static int tick = 1;
     protected java.util.Date birthdate;
     protected String project;
-    public int day;
+    protected int day;
     protected HashSet<String> nutrition;
     protected List<Quest> store;
     protected Quest yesterQuest;
@@ -23,19 +22,55 @@ public class Project {
         this.birthdate = new Date();
     }
 
-    //TODO: print question, post prev. soln if any
+    public void addQuestion(Quest q) {
+        store.add(q);
+    }
+
+    // EFFECTS: returns random question from project
     public Quest chooseQuestion() {
-        return null;
+        Random random = new Random();
+        int randIndex = random.nextInt(store.size());
+        return store.get(randIndex);
     }
 
-    public List<Soln> getPrevSoln() {
-        return null;
+    public List<Quest> searchProject(String s) throws NoMatchingResultException {
+        List<Quest> results = new ArrayList();
+        for (Quest q : store) {
+            if (q.getTex().contains(s)) {
+                results.add(q);
+            }
+        }
+        if (results.size() == 0) {
+            throw new NoMatchingResultException();
+        }
+        return results;
     }
 
-    // EFFECTS: add project and writeup fields in file/String
-    // MODIFIES: this
-    public void postPreamble() {
+    public int getDay() {
+        return day;
     }
 
+    public void setDay(int day) {
+        this.day = day;
+    }
 
+    public Quest getYesterQuest() {
+        return yesterQuest;
+    }
+
+    public void setYesterQuest(Quest yesterQuest) {
+        this.yesterQuest = yesterQuest;
+    }
+
+    public String getProject() {
+        return project;
+    }
+
+    public void setProject(String project) {
+        this.project = project;
+    }
+
+    public List<Quest> getStore() {
+        return store;
+    }
 }

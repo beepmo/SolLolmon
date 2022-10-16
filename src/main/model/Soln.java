@@ -1,10 +1,10 @@
 package model;
 
-public class Soln extends Pro {
+public class Soln extends ProjectEntry {
     private Quest question;
 
     public Soln(Quest question,User user) {
-        super(user);
+        super(user,question.project);
         this.question = question;
     }
 

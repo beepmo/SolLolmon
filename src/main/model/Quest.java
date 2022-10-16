@@ -2,18 +2,18 @@ package model;
 
 import java.util.ArrayList;
 
-public class Quest extends WriteUp {
-
-    public Project project;
+public class Quest extends ProjectEntry {
     private int seal;
     // number of sols for which this question is chosen
     private ArrayList<Soln> solutions;
 
+    // EFFECTS: constructs new question in project p
+    // MODIFIES: Project p
     public Quest(User user, Project p) {
-        super(user);
+        super(user,p);
         solutions = new ArrayList<Soln>();
-        this.project = p;
         seal = 0;
+        p.addQuestion(this);
     }
 
     public void addSoln(Soln s) {

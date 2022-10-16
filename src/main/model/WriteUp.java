@@ -18,13 +18,12 @@ public abstract class WriteUp {
     }
 
     // EFFECTS: create writeup (likely String or tex File from console)
-    //TODO get string
+    // MODIFIES: this
     public void scanTex(String s) {
         this.tex = s;
     }
 
     // EFFECTS: check basic elements for tex file to compile/valid writeup
-    //TODO this will always return true for now
     public boolean checkBones() {
         return true;
     }
@@ -36,10 +35,8 @@ public abstract class WriteUp {
 
     }
 
-    // EFFECTS: add project and writeup fields in file/String
-    // MODIFIES: this
-    public void postPreamble() {
-
+    public String getSource() {
+        return source;
     }
 
     // EFFECTS: add string to describe source/credit attribution
@@ -61,7 +58,7 @@ public abstract class WriteUp {
     }
 
     // EFFECTS: return contributor
-    protected User getContributor() {
+    public User getContributor() {
         return contributor;
     }
 
@@ -70,4 +67,11 @@ public abstract class WriteUp {
         return dateAdded;
     }
 
+    public String getTex() {
+        return tex;
+    }
+
+    public void setTex(String tex) {
+        this.tex = tex;
+    }
 }
