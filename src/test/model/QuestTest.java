@@ -32,7 +32,6 @@ class QuestTest {
         // TODO
         //  To test dateAdded, I will need dependency inversion.
         //  I obtained TA permission to omit this test because not much could go wrong.
-        // assertEquals(1,q1.getDateAdded());
     }
 
     @Test
@@ -40,5 +39,56 @@ class QuestTest {
         q1.addSoln(s1);
         assertTrue(q1.getSolutions().contains(s1));
         assertEquals(1,q1.getSolutions().size());
+        assertEquals(q1,s1.getQuestion());
+    }
+
+    @Test
+    void testIncrementSeal() {
+        q1.incrementSeal();
+        assertEquals(1,q1.getSeal());
+    }
+
+    @Test
+    void testSetSeal() {
+        q1.setSeal(3);
+        assertEquals(3,q1.getSeal());
+    }
+
+    @Test
+    // Testing getter for code coverage
+    void getSeal() {
+        assertEquals(0,q1.getSeal());
+    }
+
+    @Test
+    // Why not covered by addSolutions?
+    void getSolutions() {
+        q1.addSoln(s1);
+        assertTrue(q1.getSolutions().contains(s1));
+        assertEquals(1,q1.getSolutions().size());
+    }
+
+    @Test
+    void removeSoln() {
+        q1.addSoln(s1);
+        q1.removeSoln(s1);
+        assertEquals(0,q1.getSolutions().size());
+        assertNull(s1.getQuestion());
+    }
+
+    @Test
+    void scanTex() {
+        q1.scanTex("q1 body");
+        assertEquals("q1 body",q1.getTex());
+        s1.scanTex("s1 body");
+        assertEquals("s1 body",s1.getTex());
+    }
+
+    @Test
+    void setSource() {
+        q1.setSource("q1 source");
+        assertEquals("q1 source",q1.getSource());
+        s1.setSource("s1 source");
+        assertEquals("s1 source",s1.getSource());
     }
 }

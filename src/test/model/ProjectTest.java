@@ -25,13 +25,22 @@ class ProjectTest {
     }
 
     @Test
-    // Covered in QuestTest
-    void testAddQuestion() {
-
+    void testProject() {
+        assertEquals("SolLolmon",p1.getProject());
+        assertEquals(0,p1.getDay());
+        assertEquals(2,p1.getStore().size());
+        // TODO
+        //  To test dateAdded, I will need dependency inversion.
+        //  I obtained TA permission to omit this test because not much could go wrong.
     }
 
     @Test
-    // I will not test random
+    // Covered in QuestTest
+    void testAddQuestion() {
+    }
+
+    @Test
+    // I will not test for random-ness; not much could go wrong
     void testChooseQuestion() {
         assertTrue(p1.getStore().contains(p1.chooseQuestion()));
     }
@@ -57,14 +66,42 @@ class ProjectTest {
     }
 
     @Test
-    void setDay() {
-    }
-
-    @Test
     void setYesterQuest() {
+        p1.setYesterQuest(q1);
+        assertEquals(q1,p1.getYesterQuest());
+        p1.setYesterQuest(q2);
+        assertEquals(q2,p1.getYesterQuest());
     }
 
     @Test
     void setProject() {
+        p1.setProject("Singing in");
+        assertEquals("Singing in",p1.getProject());
+    }
+
+    @Test
+    // I will test this getter to ensure code coverage because it is only used in UI, which will not be tested.
+    void getDay() {
+        assertEquals(0,p1.getDay());
+    }
+
+    @Test
+    void setDay() {
+        p1.setDay(2);
+        assertEquals(2,p1.getDay());
+    }
+
+    @Test
+    // I will not test random.
+    void sealQuest() {
+        assertEquals(q1,p1.sealQuest());
+        assertEquals(q1,p1.getYesterQuest());
+        assertEquals(1,q1.getSeal());
+    }
+
+    @Test
+    void newDay() {
+        p1.newDay();
+        assertEquals(1,p1.getDay());
     }
 }

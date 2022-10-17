@@ -1,5 +1,5 @@
 # SolLolmon
-SolLolmon is an aide to train for problem solving through question of the day. 
+SolLolmon runs question of the day. 
 
 ## History
 
@@ -27,84 +27,36 @@ This project aims to automate the sacrifice's task and share it with a team, mai
 
 ## Project Proposal
 
-### Data Structure
-A question class has the following fields:
-- question tex: a .tex file stored in project data
-- contributor: who gave this problem to SolLolmon?
-- source: where did the contributor find this problem? If it is original, what is its inspiration?
-- date added: when did the contributor give this problem to SolLolmon?
-- date(s) sealed: has this problem been chosen as Question of the Sol? When are its sols if so?
-- solutions: list of solution classes
-- seal: when this problem is to be/was presented as Question of the Sol, would/did it have pre-made solutions?
-If there were no pre-made solutions, does its contributor have access to a solution through the source? 
-- nutritional information: what theorems or discipline seem hopeful to the contributor for solving this problem? 
+### Features
+- Each sol, automatically post a stored question and any stored solution for the preceding day
+- Add questions and solutions in store for all users; get accredited
+- Keep track of:
+  - source: how was the writeup found or inspired?
+  - nutrition: theorems or disciplines pertaining to the problem
+  - initial upload date of question and solution
+  - status of each question's use in project
 
-A solution class must be associated with a parent question class. It has the following fields:
-- solution tex: a .tex file
-- seal: is this solution prepared by the question contributor (accessed through question class)?
-Or caught fresh on or after the day of SolLolmon's seal?
-- contributor: who gave this solution to SolLolmon?
-- source: how is the solution credit divided between the contributor, written texts, and other people?
-- date added: some date later than question date added. 
-- nutrient: record some named ideas that were used, eg. Hall's (thm)
 
-A ritual involves
-- name: what is the entity that the ritual serves? eg. Putnam
-- collection of questions and their solutions
-- a group of users: everyone in the group has permissions to execute all question and solution methods
-- Sol count: count the Sols since this ritual is initiated
-
-A user must be identified by
-- username: to be identified in ritual, and to enter data through SolLolmon
-- email: for receiving Question of the Sol
-
-### On tick
-In practical use, a tick will be a day. On each tick, for each ritual,
-1. Select a question instance
-2. Render a pdf of the question instance in Question of the Sol format, adding to statement tex:
-   1. ritual name
-   2. Sol count
-   3. contributor
-   4. date added
-   5. source
-   6. question seal
-3. Push pdf to all users in ritual through email
-4. Increment Sol number
-
-### Any Time
-1. Take text or file input through command line or GUI to 
-   1. create question instances
-   2. create solution instances
-2. Allow user to edit fields in existing questions and solutions
-3. Allow user to search for question and solution classes by any field
-4. Store questions and solutions by ritual, allowing multiple users in the same ritual to access the ritual
-5. Create ritual with
-   1. users
-   2. questions and solutions imported by nutrition from other rituals
-6. Add user
-
-***Rituals should be exported such that other projects, such as discord bots, can build on rituals initiated in SolLolmon.***
-
-<p align="right">
+<p align="center">
   <img src="https://i.pinimg.com/originals/05/5c/55/055c550ac2ddeabc7671489e05795114.jpg" alt="Solomon's seal." height="300"/>
-</p>
-<p align="right">
-  Solomon's seal.
+<p align="center">
+   <i>P. odoratum thunberg</i>
+<p align="center">
+   Solomon's seal.
 </p>
 
-## Wish list: For Share
-Possibly outside the scope of 210 project,
-SolLolmon can be built into a discord bot to help the user run Question of the Sol for a group.
-**On tick**, send the pdf in a discord server in step 3.  
-**Any time**, let any server member perform 1-3 through commands on discord.
+### Wish list: For Share
+The store or question and solution should be exported such that other projects, 
+such as discord bots, can use a database of questions and solutions collected in SolLolmon.
 
 ## User Stories
 
-### Phase 0
-As a user, I want to import bare-bones .tex files and let SolLolmon add a ritual pre-amble.
+### Phase 1
+As a user, I want to add questions to a project.
 
-As a user, I want to add any number of solutions to a question.
+As a user, I want to search for a question from a project and add solutions to it.
 
-As a user, I want to count the number of questions in a ritual: sealed, has solution, etc.
+As a user, I want to print a question of the sol on command.
 
-As a user, I want to export a .zip file containing all question and solution .tex files for a ritual.
+When my contribution is selected as question of the sol, 
+I want the preamble to include my name as well as attribution to any sources I used.

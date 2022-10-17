@@ -6,18 +6,22 @@ import model.*;
 import java.util.List;
 import java.util.Scanner;
 
+// Question of the day application
 public class SolLolmonApp {
     private Project project;
     private User user;
     private Scanner input;
 
+    // EFFECTS: runs the SolLolmon application
     public SolLolmonApp() {
         runSolLolmon();
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes user input
     private void runSolLolmon() {
         boolean keepGoing = true;
-        String command = null;
+        String command;
 
         init();
 
@@ -36,6 +40,8 @@ public class SolLolmonApp {
         System.out.println("\nGoodbye!");
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes user command
     private void processCommand(String command) {
         if (command.equals("a")) {
             addQuestion();
@@ -43,52 +49,74 @@ public class SolLolmonApp {
             addSolution();
         } else if (command.equals("d")) {
             postSoln();
+            project.newDay();
             postQuest();
         } else {
-            System.out.println("Selection not valid...");
+            System.out.println("Selection invalid.");
         }
     }
 
+    // EFFECTS: posts any solutions for the previous day's question
     private void postSoln() {
-        if (project.getDay() == 1) {
-            System.out.println("Welcome to Day 1."
+        print("=====================================================");
+
+        if (project.getDay() == 0) { // first day: yesterQuest is null
+            print("Welcome to Day 1.\n"
                     + "On subsequent days, any solutions to the previous day's question will be posted here.");
         } else {
             List<Soln> prevSolns = project.getYesterQuest().getSolutions();
-            for (Soln soln : prevSolns) {
-                String tex = soln.getTex();
-                System.out.println("\n" + tex);
+            if (prevSolns.size() == 0) {
+                print("Yesterday's question is wild and untamed.");
+            } else {
+                for (Soln soln : prevSolns) {
+                    String tex = soln.getTex();
+                    print("Behold a solution:");
+                    print(tex);
+                }
             }
         }
     }
 
+    // EFFECTS: prepares and posts new question of the day
+    // MODIFIES: this
     private void postQuest() {
-        Quest chosen = project.chooseQuestion();
-        String tex = chosen.getTex();
-
-        postPreamble(chosen);
-
-        System.out.println("\n" + tex);
+        Quest q = project.sealQuest();
+        presentQuest(q);
     }
 
-    private void postPreamble(Quest chosen) {
-        System.out.println("Day " + project.getDay() + " of " + project.getProject());
-        print("Contributor: " + chosen.getContributor());
+    // EFFECTS: prints out prepared question of the day
+    private void presentQuest(Quest chosen) {
+        print("=====================================================");
+        print("                Day " + project.getDay() + " of " + project.getProject());
+        print("Contributor: " + chosen.getContributor().getName());
         print("Source: " + chosen.getSource());
         print("Behold...");
+        String tex = chosen.getTex();
+        print(tex);
+        print("=====================================================");
+
     }
 
+    // EFFECTS: selects a question and adds solution to it
+    // MODIFIES: this
     private void addSolution() {
         try {
             Quest q = selectQuest();
             Soln s = new Soln(q,user);
             q.addSoln(s);
+
+            print("Enter your solution!\n" + "As of now, as plain text without line breaks please.");
+            String tex = input.next();
+            s.scanTex(tex);
+            print("Solution added. Cheers,\nLolmon");
+
         } catch (NoMatchingResultException e) {
             print("Sorry, my search capability is insufficient for locating the desired quest."
                     + "\n Try some other exact wording?");
         }
     }
 
+    // EFFECTS: takes input for question search, displays options, takes selection
     private Quest selectQuest() throws NoMatchingResultException {
         print("Enter a keyword from the question that you remember: ");
         String s = input.next();
@@ -96,30 +124,38 @@ public class SolLolmonApp {
 
         print("Here are the search results. Enter label number to select a question.");
         for (int i = 0; i < options.size(); i++) {
-            print(String.valueOf(i));
-            print(String.valueOf(options.get(i)));
+            print(i + ": " + options.get(i).getTex());
         }
         int i = Integer.parseInt(input.next());
 
         return options.get(i);
     }
 
-
+    // EFFECTS: adds a question to the project
+    // MODIFIES: this
     private void addQuestion() {
         Quest q = new Quest(user,project);
         System.out.println("\nInput a question in tex without newline:"
-                + "(Will figure out better support for latex later)");
+                + "\n(Will figure out better support for latex later)");
         String tex = input.next();
         q.scanTex(tex);
 
-        System.out.println("Add relevant tags? (y/n)"
-                + "just n right now");
+        print("Please describe how this question came to you.\n"
+                + "(Book, course, inspiration?)\n"
+                + "Enter source:");
+        String source = input.next();
+        q.setSource(source);
+        print("Source all set.");
+
+        print("Add relevant tags? (y/n)"
+                + "\n Right now, n has been selected for you.");
         // TODO support nutrition
     }
 
+    // EFFECTS: displays menu of options to user
     private void displayMenu() {
         System.out.println("\nSelect from:");
-        System.out.println("\tq -> input a question");
+        System.out.println("\ta -> input a question");
         System.out.println("\ts -> input a solution to a question");
         System.out.println("\td -> get the question of the day");
         System.out.println("\tq -> quit");
@@ -131,24 +167,43 @@ public class SolLolmonApp {
         input = new Scanner(System.in);
         input.useDelimiter("\n");
 
+        header();
+
         logUser();
 
         createProject();
     }
 
-    private void createProject() {
-        System.out.println("Enter title of this Question ritual: \n");
-        String title = input.next();
-        this.project = new Project(title);
+    // EFFECTS: prints neat banner
+    private void header() {
+        print("=====================================================");
+        print("                      SolLolmon");
+        print("=====================================================");
     }
 
+    // EFFECTS: initializes project, prompts for question to be added
+    // MODIFIES: this
+    private void createProject() {
+        print("Creating new question of the day project.\n"
+                + "Enter title:");
+        String title = input.next();
+        this.project = new Project(title);
+
+        print("Project created. Cheers,\nLolmon");
+        print("To get started, add a question.");
+        addQuestion();
+    }
+
+    // EFFECTS: initializes user
+    // MODIFIES: this
     private void logUser() {
-        System.out.println("Enter username: \n "
-                + "(Questions and solutions that you contribute will be accredited to this name)");
+        System.out.println("Questions and solutions that you contribute will be accredited to your username.");
+        print("Enter user name:");
         String name = input.next();
         this.user = new User(name);
     }
 
+    // EFFECTS: prints with new line
     private void print(String x) {
         System.out.println("\n" + x);
     }
