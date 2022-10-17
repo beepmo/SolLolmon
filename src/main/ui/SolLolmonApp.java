@@ -135,14 +135,15 @@ public class SolLolmonApp {
     // MODIFIES: this
     private void addQuestion() {
         Quest q = new Quest(user,project);
-        System.out.println("\nInput a question in tex without newline:"
-                + "\n(Will figure out better support for latex later)");
+        print("Please enter a question, in plain text without newline.\n"
+                + "(Latex support coming soon!)\n"
+                + "Enter question:\n");
         String tex = input.next();
         q.scanTex(tex);
 
         print("Please describe how this question came to you.\n"
                 + "(Book, course, inspiration?)\n"
-                + "Enter source:");
+                + "Enter source:\n");
         String source = input.next();
         q.setSource(source);
         print("Source all set.");

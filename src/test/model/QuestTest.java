@@ -61,6 +61,7 @@ class QuestTest {
     }
 
     @Test
+    // Testing getter for code coverage
     // Why not covered by addSolutions?
     void getSolutions() {
         q1.addSoln(s1);

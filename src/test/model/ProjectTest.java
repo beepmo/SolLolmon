@@ -53,6 +53,9 @@ class ProjectTest {
         try {
             assertEquals(2,p1.searchProject("xi").size());
             assertTrue(p1.searchProject("xi").contains(q1) && p1.searchProject("xi").contains(q2));
+
+            assertEquals(1,p1.searchProject("dao").size());
+            assertTrue(p1.searchProject("dao").contains(q1));
         } catch (NoMatchingResultException e) {
             System.out.println("NoMatchingResultException was thrown where I was not testing for it.");
         }
@@ -94,7 +97,7 @@ class ProjectTest {
     @Test
     // I will not test random.
     void sealQuest() {
-        assertEquals(q1,p1.sealQuest());
+        assertTrue(q1.equals(p1.sealQuest()) || q2.equals(p1.sealQuest()));
         assertEquals(q1,p1.getYesterQuest());
         assertEquals(1,q1.getSeal());
     }
