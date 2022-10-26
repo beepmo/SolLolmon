@@ -1,6 +1,7 @@
 package model;
 
-import java.io.File;
+import org.json.JSONObject;
+
 import java.util.Date;
 import java.util.List;
 
@@ -41,6 +42,18 @@ public abstract class WriteUp {
 
     public String getTex() {
         return tex;
+    }
+
+    protected JSONObject toJson() {
+        JSONObject json = new JSONObject();
+
+        json.put("tex", tex);
+        json.put("contributor", contributor.toJson());
+        json.put("dateAdded", dateAdded);
+        json.put("nutrition", nutrition);
+        json.put("source", source);
+
+        return json;
     }
 
     /*

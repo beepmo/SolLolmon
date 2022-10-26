@@ -1,11 +1,14 @@
 package model;
 
 import exceptions.NoMatchingResultException;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
 
 import java.util.*;
 
 // Represents a project with a collection of questions that runs question of the day, counting days
-public class Project {
+public class Project implements Writable {
 
     protected String project; // project name
     protected int day; // counts number of days
@@ -105,5 +108,24 @@ public class Project {
     // TODO implement settings in user interface
     public void setProject(String project) {
         this.project = project;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("project", project);
+        json.put("day", day);
+        json.put("store", storeToJson());
+        return json;
+    }
+
+    private JSONArray storeToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Quest q : store) {
+            jsonArray.put(q.toJson());
+        }
+
+        return jsonArray;
     }
 }
