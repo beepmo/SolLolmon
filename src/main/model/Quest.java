@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+// Represents a question entry in a project
 public class Quest extends ProjectEntry {
     private int seal; // number of days for which this question is chosen, 0 indicating an unpublished question
     private ArrayList<Soln> solutions; // solutions for this question

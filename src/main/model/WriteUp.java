@@ -4,12 +4,13 @@ import java.io.File;
 import java.util.Date;
 import java.util.List;
 
+// Represents a write-up, which may belong to a project, and be a question or solution
 public abstract class WriteUp {
-    String tex;
-    User contributor;
-    java.util.Date dateAdded;
-    List<String> nutrition;
-    String source;
+    String tex; // content of the write-up
+    User contributor; // username of contributor
+    java.util.Date dateAdded; // creation time of the writeup
+    List<String> nutrition; // relevant disciplines/theorems for this write-up
+    String source; // contribution's description of their source/credit attribution
 
     // EFFECTS: construct writeup with date, contributor
     public WriteUp(User user) {

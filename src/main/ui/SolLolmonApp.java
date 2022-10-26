@@ -56,7 +56,7 @@ public class SolLolmonApp {
         }
     }
 
-    // EFFECTS: posts any solutions for the previous day's question
+    // EFFECTS: posts any solutions, with attribution, for the previous day's question
     private void postSoln() {
         print("=====================================================");
 
@@ -70,7 +70,9 @@ public class SolLolmonApp {
             } else {
                 for (Soln soln : prevSolns) {
                     String tex = soln.getTex();
-                    print("Behold a solution:");
+                    print("Here is a solution by " + soln.getContributor() + ".\n"
+                            + soln.getContributor() + "'s source: " + soln.getSource() + ".\n"
+                            + "Behold:\n");
                     print(tex);
                 }
             }

@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents a single sign-on user; writeups contributed will be accredited to this user
-public class User {
+public class User implements Writable {
     String name; // name of the user
     // TODO fields for all write-ups contributed by this user
 
@@ -21,4 +24,12 @@ public class User {
     public String getName() {
         return name;
     }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        return json;
+    }
+
 }

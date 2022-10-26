@@ -1,5 +1,6 @@
 package model;
 
+// Represents a write-up that belongs to a specific project
 public class ProjectEntry extends WriteUp {
 
     protected Project project;

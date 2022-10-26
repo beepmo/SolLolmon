@@ -60,3 +60,8 @@ As a user, I want to print a question of the sol on command.
 
 When my contribution is selected as question of the sol, 
 I want the preamble to include my name as well as attribution to any sources I used.
+
+### Phase 2
+As a user, I want to save all my contributions to file.
+
+As a user, I want to load the entire project from file.
