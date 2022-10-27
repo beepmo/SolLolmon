@@ -2,10 +2,7 @@
 
 package persistence;
 
-import model.Project;
-import model.Quest;
-import model.Soln;
-import model.User;
+import model.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -73,15 +70,23 @@ public class JsonReader {
         return projectFromJson;
     }
 
-    // EFFECTS: parses quest from JSON object and returns it
-    private Quest parseQuest(JSONObject jsonObject) {
+    // EFFECTS: parses ProjectEntry from JSON object and returns it
+    private ProjectEntry parseProjectEntry(JSONObject jsonObject) {
         Project project = parseProject(jsonObject.getJSONObject("project"));
         User user = parseUser(jsonObject.getJSONObject("user"));
-        Quest questFromJson = new Quest(user, project);
+        ProjectEntry projectEntryFromJson = new ProjectEntry(user, project);
+
+        projectEntryFromJson.setSource(jsonObject.getString("source"));
+        projectEntryFromJson.scanTex(jsonObject.getString("tex"));
+
+        return projectEntryFromJson;
+    }
+
+    // EFFECTS: parses quest from JSON object and returns it
+    private Quest parseQuest(JSONObject jsonObject) {
+        Quest questFromJson = (Quest) parseProjectEntry(jsonObject);
 
         questFromJson.setSeal(jsonObject.getInt("seal"));
-        questFromJson.setSource(jsonObject.getString("source"));
-        questFromJson.scanTex(jsonObject.getString("tex"));
 
         JSONArray jsonSolutions = jsonObject.getJSONArray("solutions");
         for (Object jsonObject1 : jsonSolutions) {
@@ -93,11 +98,9 @@ public class JsonReader {
 
     // EFFECTS: parses solution from JSON object and returns it
     private Soln parseSoln(JSONObject jsonObject) {
-        User user = parseUser(jsonObject.getJSONObject("user"));
-        Quest quest = parseQuest(jsonObject.getJSONObject("quest"));
-        Soln solnFromJson = new Soln(quest, user);
+        Soln solnFromJson = (Soln) parseProjectEntry(jsonObject);
 
-        // FIXME continue
+        solnFromJson.setQuestion(parseQuest(jsonObject.getJSONObject("question")));
 
         return solnFromJson;
     }

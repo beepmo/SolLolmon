@@ -52,6 +52,7 @@ public class Quest extends ProjectEntry implements NeedFirstToArray {
         setSeal(seal);
     }
 
+    @Override
     public JSONObject toJson() {
         JSONObject json = super.toJson();
 

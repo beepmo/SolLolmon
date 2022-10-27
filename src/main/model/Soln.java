@@ -1,12 +1,15 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.NeedToObject;
+
 // a solution writeup for a question
-public class Soln extends ProjectEntry {
+public class Soln extends ProjectEntry implements NeedToObject {
     private Quest question; // question that this solution answers
 
     // EFFECTS: creates a solution under a question, accredited to current user
     public Soln(Quest question,User user) {
-        super(user,question.project);
+        super(user, question.project);
         this.question = question;
     }
 
@@ -26,4 +29,11 @@ public class Soln extends ProjectEntry {
         return question;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = super.toJson();
+        json.put("question", question.toJson());
+
+        return json;
+    }
 }

@@ -40,13 +40,15 @@ public class JsonWriterTest extends JsonTest {
     @Test
     void testWriterProject1Question0Solution() {
         try {
-            JsonWriter writer = new JsonWriter("./data/testWriterProject1Q0S.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterProject1Question0Solution.json");
             writer.open();
             writer.write(p1);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterUser.json");
+            JsonReader reader = new JsonReader("./data/testWriterProject1Question0Solution.json");
             Project projectFromJson = reader.readProject();
+
+            checkProject(p1, projectFromJson);
         } catch (IOException e) {
             fail("No exception was expected.");
         }
