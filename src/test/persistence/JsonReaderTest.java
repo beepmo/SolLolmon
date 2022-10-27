@@ -24,7 +24,7 @@ public class JsonReaderTest extends JsonTest {
         JsonReader reader = new JsonReader("./data/testWriterUser.json");
         try {
             User userFromJson = reader.readUser();
-            checkUser(userFromJson);
+            checkUser(userFromSmon, userFromJson); // recall that userFromSmon was written into this test file
         } catch (IOException e) {
             fail("No exception was expected.");
         }

@@ -30,7 +30,7 @@ public class JsonWriterTest extends JsonTest {
 
             JsonReader reader = new JsonReader("./data/testWriterUser.json");
             User userFromJson = reader.readUser();
-            checkUser(userFromJson);
+            checkUser(userFromSmon, userFromJson);
         } catch (IOException e) {
             fail("No exception was expected.");
         }
