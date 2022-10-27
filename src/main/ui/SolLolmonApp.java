@@ -136,7 +136,8 @@ public class SolLolmonApp {
     // EFFECTS: adds a question to the project
     // MODIFIES: this
     private void addQuestion() {
-        Quest q = new Quest(user,project);
+        Quest q = new Quest(user);
+        project.addQuestion(q); // this should take care of everything that bidirectionality originally did
         print("Please enter a question, in plain text without newline.\n"
                 + "(Latex support coming soon!)\n"
                 + "Enter question:\n");

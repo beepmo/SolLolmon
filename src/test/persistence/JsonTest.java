@@ -17,7 +17,7 @@ public class JsonTest {
         userFromSmon = new User("Smon");
         p1 = new Project("SolLolmon");
 
-        q1FromSmon = new Quest(userFromSmon, p1);
+        q1FromSmon = new Quest(userFromSmon);
         q1FromSmon.scanTex("Express sin(ix) in terms of exponentials.");
         q1FromSmon.setSource("Conversation");
 

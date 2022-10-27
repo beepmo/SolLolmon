@@ -1,9 +1,5 @@
 package model;
 
-import model.Project;
-import model.Quest;
-import model.Soln;
-import model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +18,8 @@ class QuestTest {
     void runBefore() {
         u1 = new User("Smon");
         p1 = new Project("SolLolmon");
-        q1 = new Quest(u1,p1);
+        q1 = new Quest(u1);
+        p1.addQuestion(q1);
         s1 = new Soln(q1,u1);
     }
 

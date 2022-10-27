@@ -7,17 +7,16 @@ import persistence.NeedFirstToArray;
 import java.util.ArrayList;
 
 // Represents a question entry in a project
-public class Quest extends ProjectEntry implements NeedFirstToArray {
+public class Quest extends WriteUp implements NeedFirstToArray {
     private int seal; // number of days for which this question is chosen, 0 indicating an unpublished question
     private ArrayList<Soln> solutions; // solutions for this question
 
     // EFFECTS: constructs new question in a project
     // MODIFIES: the project's questions store field
-    public Quest(User user, Project p) {
-        super(user,p);
+    public Quest(User user) {
+        super(user);
         solutions = new ArrayList<>();
         seal = 0;
-        p.addQuestion(this);
     }
 
     // EFFECTS: adds solution for question

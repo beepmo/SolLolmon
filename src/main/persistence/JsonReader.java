@@ -71,20 +71,21 @@ public class JsonReader {
     }
 
     // EFFECTS: parses ProjectEntry from JSON object and returns it
-    private ProjectEntry parseProjectEntry(JSONObject jsonObject) {
-        Project project = parseProject(jsonObject.getJSONObject("project"));
+    private WriteUp parseWriteup(JSONObject jsonObject) {
+        // Project project = parseProject(jsonObject.getJSONObject("project"));
         User user = parseUser(jsonObject.getJSONObject("user"));
-        ProjectEntry projectEntryFromJson = new ProjectEntry(user, project);
+        WriteUp writeUpFromJson = new WriteUp(user) {
+        };
 
-        projectEntryFromJson.setSource(jsonObject.getString("source"));
-        projectEntryFromJson.scanTex(jsonObject.getString("tex"));
+        writeUpFromJson.setSource(jsonObject.getString("source"));
+        writeUpFromJson.scanTex(jsonObject.getString("tex"));
 
-        return projectEntryFromJson;
+        return writeUpFromJson;
     }
 
     // EFFECTS: parses quest from JSON object and returns it
     private Quest parseQuest(JSONObject jsonObject) {
-        Quest questFromJson = (Quest) parseProjectEntry(jsonObject);
+        Quest questFromJson = (Quest) parseWriteup(jsonObject);
 
         questFromJson.setSeal(jsonObject.getInt("seal"));
 
@@ -98,7 +99,7 @@ public class JsonReader {
 
     // EFFECTS: parses solution from JSON object and returns it
     private Soln parseSoln(JSONObject jsonObject) {
-        Soln solnFromJson = (Soln) parseProjectEntry(jsonObject);
+        Soln solnFromJson = (Soln) parseWriteup(jsonObject);
 
         solnFromJson.setQuestion(parseQuest(jsonObject.getJSONObject("question")));
 
