@@ -2,6 +2,9 @@
 
 package persistence;
 
+import model.Project;
+import model.Quest;
+import model.Soln;
 import model.User;
 import org.json.JSONObject;
 
@@ -27,12 +30,35 @@ public class JsonWriter {
         writer = new PrintWriter(new File(destination));
     }
 
+// OVERRIDES CLUSTER BEGINS
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of workroom to file
+    // EFFECTS: writes JSON representation of user to file
     public void write(User u) {
         JSONObject json = u.toJson();
         saveToFile(json.toString(TAB));
     }
+
+    // MODIFIES: this
+    // EFFECTS: writes JSON representation of project to file
+    public void write(Project project) {
+        JSONObject json = project.toJson();
+        saveToFile(json.toString(TAB));
+    }
+
+    // MODIFIES: this
+    // EFFECTS: writes JSON representation of quest to file
+    public void write(Quest quest) {
+        JSONObject json = quest.toJson();
+        saveToFile(json.toString(TAB));
+    }
+
+    // MODIFIES: this
+    // EFFECTS: writes JSON representation of soln to file
+    public void write(Soln soln) {
+        JSONObject json = soln.toJson();
+        saveToFile(json.toString(TAB));
+    }
+// OVERRIDES CLUSTER ENDS
 
     // MODIFIES: this
     // EFFECTS: closes writer

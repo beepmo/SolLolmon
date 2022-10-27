@@ -1,10 +1,10 @@
 package model;
 
 import org.json.JSONObject;
-import persistence.Writable;
+import persistence.NeedToObject;
 
 // Represents a single sign-on user; writeups contributed will be accredited to this user
-public class User implements Writable {
+public class User implements NeedToObject {
     String name; // name of the user
     // TODO fields for all write-ups contributed by this user
 

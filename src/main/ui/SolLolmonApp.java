@@ -89,7 +89,7 @@ public class SolLolmonApp {
     // EFFECTS: prints out prepared question of the day
     private void presentQuest(Quest chosen) {
         print("=====================================================");
-        print("                Day " + project.getDay() + " of " + project.getProject());
+        print("                Day " + project.getDay() + " of " + project.getName());
         print("Contributor: " + chosen.getContributor().getName());
         print("Source: " + chosen.getSource());
         print("Behold...");

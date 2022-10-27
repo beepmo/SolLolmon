@@ -2,7 +2,11 @@
 
 package persistence;
 
+import model.Project;
+import model.Quest;
+import model.Soln;
 import model.User;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -20,13 +24,6 @@ public class JsonReader {
         this.source = source;
     }
 
-    // EFFECTS: reads user from file and returns it;
-    // throws IOException if an error occurs reading data from file
-    public User readUser() throws IOException {
-        String jsonData = readFile(source);
-        JSONObject jsonObject = new JSONObject(jsonData);
-        return parseUser(jsonObject);
-    }
 
     // EFFECTS: reads source file as string and returns it
     private String readFile(String source) throws IOException {
@@ -37,6 +34,72 @@ public class JsonReader {
         }
 
         return contentBuilder.toString();
+    }
+
+    // Cluster begins
+    // EFFECTS: reads user from file and returns it;
+    // throws IOException if an error occurs reading data from file
+    public User readUser() throws IOException {
+        String jsonData = readFile(source);
+        JSONObject jsonObject = new JSONObject(jsonData);
+        return parseUser(jsonObject);
+    }
+
+    public Project readProject() throws IOException {
+        String jsonData = readFile(source);
+        JSONObject jsonObject = new JSONObject(jsonData);
+        return parseProject(jsonObject);
+    }
+
+    // TODO: Project & WriteUp: parse hashset || date
+// Parsing begins. for each class
+    // EFFECTS: parses project from JSON object and returns it
+    private Project parseProject(JSONObject jsonObject) {
+        String name = jsonObject.getString("name");
+        Project projectFromJson = new Project(name);
+
+        int day = jsonObject.getInt("day");
+        projectFromJson.setDay(day);
+
+        Quest yesterQuest = parseQuest(jsonObject.getJSONObject("yesterQuest"));
+        projectFromJson.setYesterQuest(yesterQuest);
+
+        JSONArray jsonStore = jsonObject.getJSONArray("store");
+        for (Object jsonObject1 : jsonStore) {
+            Quest quest = parseQuest((JSONObject) jsonObject1);
+            projectFromJson.addQuestion(quest);
+        }
+
+        return projectFromJson;
+    }
+
+    // EFFECTS: parses quest from JSON object and returns it
+    private Quest parseQuest(JSONObject jsonObject) {
+        Project project = parseProject(jsonObject.getJSONObject("project"));
+        User user = parseUser(jsonObject.getJSONObject("user"));
+        Quest questFromJson = new Quest(user, project);
+
+        questFromJson.setSeal(jsonObject.getInt("seal"));
+        questFromJson.setSource(jsonObject.getString("source"));
+        questFromJson.scanTex(jsonObject.getString("tex"));
+
+        JSONArray jsonSolutions = jsonObject.getJSONArray("solutions");
+        for (Object jsonObject1 : jsonSolutions) {
+            Soln soln = parseSoln((JSONObject) jsonObject1);
+            questFromJson.addSoln(soln);
+        }
+        return questFromJson;
+    }
+
+    // EFFECTS: parses solution from JSON object and returns it
+    private Soln parseSoln(JSONObject jsonObject) {
+        User user = parseUser(jsonObject.getJSONObject("user"));
+        Quest quest = parseQuest(jsonObject.getJSONObject("quest"));
+        Soln solnFromJson = new Soln(quest, user);
+
+        // FIXME continue
+
+        return solnFromJson;
     }
 
     // EFFECTS: parses user from JSON object and returns it

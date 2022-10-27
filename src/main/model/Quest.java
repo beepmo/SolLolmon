@@ -2,12 +2,12 @@ package model;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import persistence.Writable;
+import persistence.NeedFirstToArray;
 
 import java.util.ArrayList;
 
 // Represents a question entry in a project
-public class Quest extends ProjectEntry implements Writable {
+public class Quest extends ProjectEntry implements NeedFirstToArray {
     private int seal; // number of days for which this question is chosen, 0 indicating an unpublished question
     private ArrayList<Soln> solutions; // solutions for this question
 
@@ -56,11 +56,12 @@ public class Quest extends ProjectEntry implements Writable {
         JSONObject json = super.toJson();
 
         json.put("seal", seal);
-        json.put("solutions", solutionsToJson());
+        json.put("solutions", toJsonArray());
         return json;
     }
 
-    private JSONArray solutionsToJson() {
+    @Override
+    public JSONArray toJsonArray() {
         JSONArray jsonArray = new JSONArray();
 
         for (Soln s : solutions) {

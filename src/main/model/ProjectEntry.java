@@ -1,10 +1,10 @@
 package model;
 
 import org.json.JSONObject;
-import persistence.Writable;
+import persistence.NeedToObject;
 
 // Represents a write-up that belongs to a specific project
-public class ProjectEntry extends WriteUp implements Writable {
+public class ProjectEntry extends WriteUp implements NeedToObject {
 
     protected Project project;
 

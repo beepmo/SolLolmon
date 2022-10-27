@@ -9,15 +9,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JsonTest {
     protected User userFromSmon;
-    protected Project projFromSmon;
+    protected Project p1;
     protected Quest q1FromSmon;
 
     @BeforeEach
     protected void runBefore() {
         userFromSmon = new User("Smon");
-        projFromSmon = new Project("SolLolmon");
+        p1 = new Project("SolLolmon");
 
-        q1FromSmon = new Quest(userFromSmon, projFromSmon);
+        q1FromSmon = new Quest(userFromSmon, p1);
         q1FromSmon.scanTex("Express sin(ix) in terms of exponentials.");
         q1FromSmon.setSource("Conversation");
 
@@ -33,6 +33,15 @@ public class JsonTest {
         checkUser(qOriginal.getContributor(), qFromJson.getContributor());
         assertEquals(qOriginal.getTex(), qFromJson.getTex());
         assertEquals(qOriginal.getSource(), qFromJson.getSource());
+        // TODO finish check quest
+    }
+
+    // EFFECTS: compare original project with pFromJson
+    protected void checkProject(Project originalProject, Project projectFromJson) {
+        assertEquals(originalProject.getName(), projectFromJson.getName());
+        assertEquals(originalProject.getDay(), projectFromJson.getDay());
+        assertEquals(originalProject.getYesterQuest(), projectFromJson.getYesterQuest());
+        //see if no checkQuest is needed?
     }
 
 }

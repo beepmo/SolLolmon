@@ -3,14 +3,14 @@ package model;
 import exceptions.NoMatchingResultException;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import persistence.Writable;
+import persistence.NeedFirstToArray;
 
 import java.util.*;
 
 // Represents a project with a collection of questions that runs question of the day, counting days
-public class Project implements Writable {
+public class Project implements NeedFirstToArray {
 
-    protected String project; // project name
+    protected String name; // project name
     protected int day; // counts number of days
     protected List<Quest> store; // questions collected in the project
     protected Quest yesterQuest; // remembers yesterday's question to track its solution
@@ -21,8 +21,8 @@ public class Project implements Writable {
 
     // EFFECTS: constructs a new project
     // REQUIRES: project name is non-empty
-    public Project(String project) {
-        this.project = project;
+    public Project(String name) {
+        this.name = name;
         this.day = 0;
         this.store = new ArrayList<>();
         this.birthdate = new Date();
@@ -98,28 +98,32 @@ public class Project implements Writable {
         this.yesterQuest = yesterQuest;
     }
 
-    public String getProject() {
-        return project;
+    public String getName() {
+        return name;
     }
 
     // EFFECTS: change project name
     // MODIFIES: this
     // REQUIRES: input string is non-empty
     // TODO implement settings in user interface
-    public void setProject(String project) {
-        this.project = project;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("project", project);
+        json.put("project", name);
         json.put("day", day);
-        json.put("store", storeToJson());
+        json.put("store", toJsonArray());
+        json.put("yesterQuest", yesterQuest.toJson());
+        json.put("birthdate", birthdate);
+        json.put("nutrition", nutrition);
         return json;
     }
 
-    private JSONArray storeToJson() {
+    @Override
+    public JSONArray toJsonArray() {
         JSONArray jsonArray = new JSONArray();
 
         for (Quest q : store) {

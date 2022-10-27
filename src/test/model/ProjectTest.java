@@ -1,10 +1,6 @@
 package model;
 
 import exceptions.NoMatchingResultException;
-import model.Project;
-import model.Quest;
-import model.Soln;
-import model.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,7 +25,7 @@ class ProjectTest {
 
     @Test
     void testProject() {
-        Assertions.assertEquals("SolLolmon",p1.getProject());
+        Assertions.assertEquals("SolLolmon",p1.getName());
         Assertions.assertEquals(0,p1.getDay());
         Assertions.assertEquals(2,p1.getStore().size());
         // TODO
@@ -81,8 +77,8 @@ class ProjectTest {
 
     @Test
     void setProject() {
-        p1.setProject("Singing in");
-        Assertions.assertEquals("Singing in",p1.getProject());
+        p1.setName("Singing in");
+        Assertions.assertEquals("Singing in",p1.getName());
     }
 
     @Test
