@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 // Represents a write-up, which may belong to a project, and be a question or solution
-public abstract class WriteUp {
+public class WriteUp {
     String tex; // content of the write-up
     User contributor; // username of contributor
     java.util.Date dateAdded; // creation time of the writeup

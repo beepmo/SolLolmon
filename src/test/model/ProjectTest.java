@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.EmptyStoreException;
 import exceptions.NoMatchingResultException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -25,7 +26,11 @@ class ProjectTest extends ModelTest {
     @Test
     // I will not test for random-ness; not much could go wrong
     void testChooseQuestion() {
-        Assertions.assertTrue(p1.getStore().contains(p1.chooseQuestion()));
+        try {
+            Assertions.assertTrue(p1.getStore().contains(p1.chooseQuestion()));
+        } catch (EmptyStoreException e) {
+            // pass
+        }
     }
 
     @Test
@@ -81,7 +86,11 @@ class ProjectTest extends ModelTest {
     @Test
     // I will not test random.
     void sealQuest() {
-        Assertions.assertTrue(p1.getStore().contains(p1.sealQuest()));
+        try {
+            Assertions.assertTrue(p1.getStore().contains(p1.sealQuest()));
+        } catch (EmptyStoreException e) {
+            // pass
+        }
     }
 
     @Test

@@ -1,13 +1,21 @@
 package ui;
 
+import exceptions.EmptyStoreException;
 import exceptions.NoMatchingResultException;
 import model.*;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 // Question of the day application
 public class SolLolmonApp {
+    private static final String JSON_STORE = "./data/project.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
     private Project project;
     private User user;
     private Scanner input;
@@ -43,16 +51,26 @@ public class SolLolmonApp {
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
-        if (command.equals("a")) {
-            addQuestion();
-        } else if (command.equals("s")) {
-            addSolution();
-        } else if (command.equals("d")) {
-            postSoln();
-            project.newDay();
-            postQuest();
-        } else {
-            System.out.println("Selection invalid.");
+        switch (command) {
+            case "a":
+                addQuestion();
+                break;
+            case "s":
+                addSolution();
+                break;
+            case "d":
+                postSoln();
+                project.newDay();
+                postQuest();
+                break;
+            case "p":
+                saveProject();
+                break;
+            case "l":
+                loadProject();
+                break;
+            default:
+                System.out.println("Selection invalid.");
         }
     }
 
@@ -70,9 +88,10 @@ public class SolLolmonApp {
             } else {
                 for (Soln soln : prevSolns) {
                     String tex = soln.getTex();
-                    print("Here is a solution by " + soln.getContributor() + ".\n"
-                            + soln.getContributor() + "'s source: " + soln.getSource() + ".\n"
-                            + "Behold:\n");
+                    print("Here is a solution to Day " + (project.getDay() - 1) + " by "
+                            + soln.getContributor().getName() + ".\n"
+                            + soln.getContributor().getName() + "'s source: " + soln.getSource() + ".\n"
+                            + "Behold:");
                     print(tex);
                 }
             }
@@ -82,8 +101,13 @@ public class SolLolmonApp {
     // EFFECTS: prepares and posts new question of the day
     // MODIFIES: this
     private void postQuest() {
-        Quest q = project.sealQuest();
-        presentQuest(q);
+        Quest q = null;
+        try {
+            q = project.sealQuest();
+            presentQuest(q);
+        } catch (EmptyStoreException e) {
+            print("Store is empty. To call it a day, add at least one question.");
+        }
     }
 
     // EFFECTS: prints out prepared question of the day
@@ -104,12 +128,20 @@ public class SolLolmonApp {
     private void addSolution() {
         try {
             Quest q = selectQuest();
-            Soln s = new Soln(q,user);
+            Soln s = new Soln(user);
             q.addSoln(s);
 
             print("Enter your solution!\n" + "As of now, as plain text without line breaks please.");
             String tex = input.next();
             s.scanTex(tex);
+            print("Text scanned.");
+
+            print("Please describe how this solution came to you.\n"
+                    + "(Book, course, inspiration?)\n"
+                    + "Enter source:\n");
+            String source = input.next();
+            s.setSource(source);
+            print("Source all set.");
             print("Solution added. Cheers,\nLolmon");
 
         } catch (NoMatchingResultException e) {
@@ -136,6 +168,13 @@ public class SolLolmonApp {
     // EFFECTS: adds a question to the project
     // MODIFIES: this
     private void addQuestion() {
+        if (project == null) {
+            createProject();
+        }
+        if (user == null) {
+            logUser();
+        }
+
         Quest q = new Quest(user);
         project.addQuestion(q); // this should take care of everything that bidirectionality originally did
         print("Please enter a question, in plain text without newline.\n"
@@ -162,6 +201,8 @@ public class SolLolmonApp {
         System.out.println("\ta -> input a question");
         System.out.println("\ts -> input a solution to a question");
         System.out.println("\td -> get the question of the day");
+        System.out.println("\tp -> save this project");
+        System.out.println("\tl -> load previously saved project from file");
         System.out.println("\tq -> quit");
     }
 
@@ -171,11 +212,11 @@ public class SolLolmonApp {
         input = new Scanner(System.in);
         input.useDelimiter("\n");
 
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+
         header();
 
-        logUser();
-
-        createProject();
     }
 
     // EFFECTS: prints neat banner
@@ -205,6 +246,29 @@ public class SolLolmonApp {
         print("Enter user name:");
         String name = input.next();
         this.user = new User(name);
+    }
+
+    // EFFECTS: saves the workroom to file
+    private void saveProject() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(project);
+            jsonWriter.close();
+            System.out.println("Saved " + project.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads prokect from file
+    private void loadProject() {
+        try {
+            project = jsonReader.readProject();
+            System.out.println("Loaded " + project.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
     // EFFECTS: prints with new line

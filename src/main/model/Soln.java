@@ -1,10 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+
 // a solution writeup for a question
 public class Soln extends WriteUp {
 
     // EFFECTS: creates a solution under a question, accredited to current user
-    public Soln(Quest question,User user) {
+    public Soln(User user) {
         super(user);
     }
 
@@ -13,5 +15,18 @@ public class Soln extends WriteUp {
     public void setQuestion(Quest question) {
         question.removeSoln(this);
     }
-    
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+
+        json.put("tex", tex);
+        json.put("contributor", contributor.toJson());
+        json.put("dateAdded", dateAdded);
+        json.put("nutrition", nutrition);
+        json.put("source", source);
+
+        return json;
+    }
+
 }

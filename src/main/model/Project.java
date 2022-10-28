@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.EmptyStoreException;
 import exceptions.NoMatchingResultException;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -35,11 +36,16 @@ public class Project implements NeedFirstToArray {
         store.add(q);
     }
 
+    // REQUIRES: store must have at least one question
     // EFFECTS: returns a random question from project store
-    public Quest chooseQuestion() {
+    public Quest chooseQuestion() throws EmptyStoreException {
+        if (store.size() == 0) {
+            throw new EmptyStoreException();
+        }
         Random random = new Random();
         int randIndex = random.nextInt(store.size());
         return store.get(randIndex);
+
     }
 
     // EFFECTS: returns a list of questions that contain a given string
@@ -60,7 +66,7 @@ public class Project implements NeedFirstToArray {
     // EFFECTS: establishes a chosen question as question of the day
     // REQUIRES: chosen question is in project store
     // MODIFIES: this, chosen question
-    public Quest sealQuest() {
+    public Quest sealQuest() throws EmptyStoreException {
         Quest chosen = chooseQuestion();
         chosen.incrementSeal();
         setYesterQuest(chosen);
@@ -116,10 +122,14 @@ public class Project implements NeedFirstToArray {
         json.put("name", name);
         json.put("day", day);
         json.put("store", toJsonArray());
-        json.put("yesterQuest", yesterQuest.toJson());
+        try {
+            json.put("yesterQuest", yesterQuest.toJson());
+        } catch (NullPointerException e) {
+            json.put("yesterQuest", "");
+            // toJson cannot be called on null
+        }
         json.put("birthdate", birthdate);
         json.put("nutrition", nutrition);
-
 
         return json;
     }

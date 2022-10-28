@@ -16,7 +16,7 @@ public class ModelTest {
         p1 = new Project("SolLolmon");
         q1 = new Quest(u1);
         p1.addQuestion(q1);
-        s1 = new Soln(q1, u1);
+        s1 = new Soln(u1);
         q2 = new Quest(u1);
         p1.addQuestion(q2);
     }

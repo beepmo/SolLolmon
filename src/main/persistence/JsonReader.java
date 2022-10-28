@@ -67,44 +67,28 @@ public class JsonReader {
             System.out.println(e);
         }
 
-        try {
-            JSONArray jsonStore = jsonObject.getJSONArray("store");
-            for (Object jsonObject1 : jsonStore) {
-                Quest quest = parseQuest((JSONObject) jsonObject1);
-                projectFromJson.addQuestion(quest);
-            }
-        } catch (JSONException e) {
-            // pass because it was null when saved
+        JSONArray jsonStore = jsonObject.getJSONArray("store");
+        for (Object jsonObject1 : jsonStore) {
+            Quest quest = parseQuest((JSONObject) jsonObject1);
+            projectFromJson.addQuestion(quest);
         }
 
         return projectFromJson;
     }
 
-    // EFFECTS: parses WriteUp from JSON object and returns it
-    private WriteUp parseWriteup(JSONObject jsonObject) {
-        User user = parseUser(jsonObject.getJSONObject("contributor"));
-        WriteUp writeUpFromJson = new WriteUp(user);
-
-        writeUpFromJson.setSource(jsonObject.getString("source"));
-        writeUpFromJson.scanTex(jsonObject.getString("tex"));
-
-        return writeUpFromJson;
-    }
-
     // EFFECTS: parses quest from JSON object and returns it
     private Quest parseQuest(JSONObject jsonObject) {
-        Quest questFromJson = (Quest) parseWriteup(jsonObject);
+        User user = parseUser(jsonObject.getJSONObject("contributor"));
+        Quest questFromJson = new Quest(user);
 
+        questFromJson.setSource(jsonObject.getString("source"));
+        questFromJson.scanTex(jsonObject.getString("tex"));
         questFromJson.setSeal(jsonObject.getInt("seal"));
 
-        try {
-            JSONArray jsonSolutions = jsonObject.getJSONArray("solutions");
-            for (Object jsonObject1 : jsonSolutions) {
-                Soln soln = parseSoln((JSONObject) jsonObject1);
-                questFromJson.addSoln(soln);
-            }
-        } catch (JSONException e) {
-            // pass because it was null when saved
+        JSONArray jsonSolutions = jsonObject.getJSONArray("solutions");
+        for (Object jsonObject1 : jsonSolutions) {
+            Soln soln = parseSoln((JSONObject) jsonObject1);
+            questFromJson.addSoln(soln);
         }
 
         return questFromJson;
@@ -112,8 +96,10 @@ public class JsonReader {
 
     // EFFECTS: parses solution from JSON object and returns it
     private Soln parseSoln(JSONObject jsonObject) {
-        Soln solnFromJson = (Soln) parseWriteup(jsonObject);
-
+        User user = parseUser(jsonObject.getJSONObject("contributor"));
+        Soln solnFromJson = new Soln(user);
+        solnFromJson.setSource(jsonObject.getString("source"));
+        solnFromJson.scanTex(jsonObject.getString("tex"));
         return solnFromJson;
     }
 
@@ -122,5 +108,4 @@ public class JsonReader {
         String name = jsonObject.getString("name");
         return new User(name);
     }
-
 }

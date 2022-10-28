@@ -1,5 +1,6 @@
 package persistence;
 
+import exceptions.EmptyStoreException;
 import model.Project;
 import model.User;
 import org.junit.jupiter.api.Test;
@@ -55,7 +56,7 @@ public class JsonWriterTest extends JsonTest {
             }
 
         } catch (IOException e) {
-            fail("No exception was expected.");
+            System.out.println(e);
         }
     }
 
@@ -72,13 +73,50 @@ public class JsonWriterTest extends JsonTest {
 
             checkProject(p2, projectFromJson);
         } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    void testWriterProjectP1Sealed() {
+        try {
+            p1.sealQuest();
+        } catch (EmptyStoreException e) {
+            // pass
+        }
+        testWriterProjectP1();
+    }
+
+    @Test
+    void testWriterProjectP2Sealed() {
+        try {
+            p2.sealQuest();
+        } catch (EmptyStoreException e) {
+            // pass
+        }
+        testWriterProjectP2();
+    }
+
+    @Test
+    void testClose() {
+        try {
+            JsonWriter writer = new JsonWriter("./data/testWriterUser.json");
+            writer.open();
+            writer.write(userFromSmon);
+            writer.close();
+        } catch (IOException e) {
             fail("No exception was expected.");
         }
     }
 
     @Test
-    void testWriterProjectP1Day2() {
-        p1.sealQuest();
-        testWriterProjectP1();
-    }
+    void testSaveToFile() {
+        try {
+            JsonWriter writer = new JsonWriter("./data/testWriterUser.json");
+            writer.open();
+            writer.write(userFromSmon);
+            writer.close();
+        } catch (IOException e) {
+            fail("No exception was expected.");
+        }    }
 }

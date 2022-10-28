@@ -20,7 +20,7 @@ class QuestTest {
         p1 = new Project("SolLolmon");
         q1 = new Quest(u1);
         p1.addQuestion(q1);
-        s1 = new Soln(q1,u1);
+        s1 = new Soln(u1);
     }
 
     @Test
