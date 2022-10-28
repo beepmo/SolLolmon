@@ -81,8 +81,7 @@ class ProjectTest extends ModelTest {
     @Test
     // I will not test random.
     void sealQuest() {
-        Assertions.assertTrue(q1.equals(p1.sealQuest()) || q2.equals(p1.sealQuest()));
-        Assertions.assertTrue(q1.equals(p1.getYesterQuest()) || q2.equals(p1.getYesterQuest()));
+        Assertions.assertTrue(p1.getStore().contains(p1.sealQuest()));
     }
 
     @Test

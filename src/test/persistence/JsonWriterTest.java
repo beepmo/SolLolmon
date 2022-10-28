@@ -38,19 +38,47 @@ public class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    void testWriterProject1Question0Solution() {
+    void testWriterProjectP1() {
         try {
-            JsonWriter writer = new JsonWriter("./data/testWriterProject1Question0Solution.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterProjectP1.json");
             writer.open();
             writer.write(p1);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterProject1Question0Solution.json");
-            Project projectFromJson = reader.readProject();
+            try {
+                JsonReader reader = new JsonReader("./data/testWriterProjectP1.json");
+                Project projectFromJson = reader.readProject();
 
-            checkProject(p1, projectFromJson);
+                checkProject(p1, projectFromJson);
+            } catch (IOException e) {
+                fail("No exception was expected.");
+            }
+
         } catch (IOException e) {
             fail("No exception was expected.");
         }
+    }
+
+    @Test
+    void testWriterProjectP2() {
+        try {
+            JsonWriter writer = new JsonWriter("./data/testWriterProjectP2.json");
+            writer.open();
+            writer.write(p2);
+            writer.close();
+
+            JsonReader reader = new JsonReader("./data/testWriterProjectP2.json");
+            Project projectFromJson = reader.readProject();
+
+            checkProject(p2, projectFromJson);
+        } catch (IOException e) {
+            fail("No exception was expected.");
+        }
+    }
+
+    @Test
+    void testWriterProjectP1Day2() {
+        p1.sealQuest();
+        testWriterProjectP1();
     }
 }

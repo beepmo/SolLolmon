@@ -116,13 +116,11 @@ public class Project implements NeedFirstToArray {
         json.put("name", name);
         json.put("day", day);
         json.put("store", toJsonArray());
-        try {
-            json.put("yesterQuest", yesterQuest.toJson());
-            json.put("birthdate", birthdate);
-            json.put("nutrition", nutrition);
-        } catch (NullPointerException e) {
-            // pass; don't put if none
-        }
+        json.put("yesterQuest", yesterQuest.toJson());
+        json.put("birthdate", birthdate);
+        json.put("nutrition", nutrition);
+
+
         return json;
     }
 

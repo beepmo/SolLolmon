@@ -1,5 +1,6 @@
 package persistence;
 
+import model.Project;
 import model.User;
 import org.junit.jupiter.api.Test;
 
@@ -25,6 +26,30 @@ public class JsonReaderTest extends JsonTest {
         try {
             User userFromJson = reader.readUser();
             checkUser(userFromSmon, userFromJson); // recall that userFromSmon was written into this test file
+        } catch (IOException e) {
+            fail("No exception was expected.");
+        }
+    }
+
+    @Test
+    void testReaderP1() {
+        try {
+            JsonReader reader = new JsonReader("./data/testWriterProjectP1.json");
+            Project projectFromJson = reader.readProject();
+
+            checkProject(p1, projectFromJson);
+        } catch (IOException e) {
+            fail("No exception was expected.");
+        }
+    }
+
+    @Test
+    void testReaderP2() {
+        try {
+            JsonReader reader = new JsonReader("./data/testWriterProjectP2.json");
+            Project projectFromJson = reader.readProject();
+
+            checkProject(p2, projectFromJson);
         } catch (IOException e) {
             fail("No exception was expected.");
         }

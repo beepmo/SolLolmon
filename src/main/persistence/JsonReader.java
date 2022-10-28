@@ -61,9 +61,10 @@ public class JsonReader {
 
         try {
             Quest yesterQuest = parseQuest(jsonObject.getJSONObject("yesterQuest"));
+            System.out.println("yesterQuest is" + yesterQuest);
             projectFromJson.setYesterQuest(yesterQuest);
         } catch (JSONException e) {
-            // pass because it was null when saved
+            System.out.println(e);
         }
 
         try {
@@ -81,10 +82,8 @@ public class JsonReader {
 
     // EFFECTS: parses WriteUp from JSON object and returns it
     private WriteUp parseWriteup(JSONObject jsonObject) {
-        // Project project = parseProject(jsonObject.getJSONObject("project"));
-        User user = parseUser(jsonObject.getJSONObject("user"));
-        WriteUp writeUpFromJson = new WriteUp(user) {
-        };
+        User user = parseUser(jsonObject.getJSONObject("contributor"));
+        WriteUp writeUpFromJson = new WriteUp(user);
 
         writeUpFromJson.setSource(jsonObject.getString("source"));
         writeUpFromJson.scanTex(jsonObject.getString("tex"));
