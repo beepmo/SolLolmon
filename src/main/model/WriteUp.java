@@ -44,7 +44,7 @@ public abstract class WriteUp {
         return tex;
     }
 
-    protected JSONObject toJson() {
+    public JSONObject toJson() {
         JSONObject json = new JSONObject();
 
         json.put("tex", tex);

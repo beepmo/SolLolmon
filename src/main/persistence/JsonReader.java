@@ -4,6 +4,7 @@ package persistence;
 
 import model.*;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -58,19 +59,27 @@ public class JsonReader {
         int day = jsonObject.getInt("day");
         projectFromJson.setDay(day);
 
-        Quest yesterQuest = parseQuest(jsonObject.getJSONObject("yesterQuest"));
-        projectFromJson.setYesterQuest(yesterQuest);
+        try {
+            Quest yesterQuest = parseQuest(jsonObject.getJSONObject("yesterQuest"));
+            projectFromJson.setYesterQuest(yesterQuest);
+        } catch (JSONException e) {
+            // pass because it was null when saved
+        }
 
-        JSONArray jsonStore = jsonObject.getJSONArray("store");
-        for (Object jsonObject1 : jsonStore) {
-            Quest quest = parseQuest((JSONObject) jsonObject1);
-            projectFromJson.addQuestion(quest);
+        try {
+            JSONArray jsonStore = jsonObject.getJSONArray("store");
+            for (Object jsonObject1 : jsonStore) {
+                Quest quest = parseQuest((JSONObject) jsonObject1);
+                projectFromJson.addQuestion(quest);
+            }
+        } catch (JSONException e) {
+            // pass because it was null when saved
         }
 
         return projectFromJson;
     }
 
-    // EFFECTS: parses ProjectEntry from JSON object and returns it
+    // EFFECTS: parses WriteUp from JSON object and returns it
     private WriteUp parseWriteup(JSONObject jsonObject) {
         // Project project = parseProject(jsonObject.getJSONObject("project"));
         User user = parseUser(jsonObject.getJSONObject("user"));
@@ -89,19 +98,22 @@ public class JsonReader {
 
         questFromJson.setSeal(jsonObject.getInt("seal"));
 
-        JSONArray jsonSolutions = jsonObject.getJSONArray("solutions");
-        for (Object jsonObject1 : jsonSolutions) {
-            Soln soln = parseSoln((JSONObject) jsonObject1);
-            questFromJson.addSoln(soln);
+        try {
+            JSONArray jsonSolutions = jsonObject.getJSONArray("solutions");
+            for (Object jsonObject1 : jsonSolutions) {
+                Soln soln = parseSoln((JSONObject) jsonObject1);
+                questFromJson.addSoln(soln);
+            }
+        } catch (JSONException e) {
+            // pass because it was null when saved
         }
+
         return questFromJson;
     }
 
     // EFFECTS: parses solution from JSON object and returns it
     private Soln parseSoln(JSONObject jsonObject) {
         Soln solnFromJson = (Soln) parseWriteup(jsonObject);
-
-        solnFromJson.setQuestion(parseQuest(jsonObject.getJSONObject("question")));
 
         return solnFromJson;
     }

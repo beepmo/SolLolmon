@@ -113,12 +113,16 @@ public class Project implements NeedFirstToArray {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("project", name);
+        json.put("name", name);
         json.put("day", day);
         json.put("store", toJsonArray());
-        json.put("yesterQuest", yesterQuest.toJson());
-        json.put("birthdate", birthdate);
-        json.put("nutrition", nutrition);
+        try {
+            json.put("yesterQuest", yesterQuest.toJson());
+            json.put("birthdate", birthdate);
+            json.put("nutrition", nutrition);
+        } catch (NullPointerException e) {
+            // pass; don't put if none
+        }
         return json;
     }
 

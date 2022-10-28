@@ -39,7 +39,6 @@ class QuestTest {
         q1.addSoln(s1);
         assertTrue(q1.getSolutions().contains(s1));
         assertEquals(1,q1.getSolutions().size());
-        assertEquals(q1,s1.getQuestion());
     }
 
     @Test
@@ -74,7 +73,6 @@ class QuestTest {
         q1.addSoln(s1);
         q1.removeSoln(s1);
         assertEquals(0,q1.getSolutions().size());
-        assertNull(s1.getQuestion());
     }
 
     @Test

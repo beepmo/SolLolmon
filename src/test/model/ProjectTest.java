@@ -2,28 +2,10 @@ package model;
 
 import exceptions.NoMatchingResultException;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-class ProjectTest {
-
-    User u1;
-    Project p1;
-    Quest q1;
-    Soln s1;
-    Quest q2;
-
-    @BeforeEach
-    void runBefore() {
-        u1 = new User("Smon");
-        p1 = new Project("SolLolmon");
-        q1 = new Quest(u1);
-        p1.addQuestion(q1);
-        s1 = new Soln(q1,u1);
-        q2 = new Quest(u1);
-        p1.addQuestion(q2);
-    }
+class ProjectTest extends ModelTest {
 
     @Test
     void testProject() {
@@ -95,14 +77,13 @@ class ProjectTest {
         Assertions.assertEquals(2,p1.getDay());
     }
 
-    // TODO fix this test
-//    @Test
-//    // I will not test random.
-//    void sealQuest() {
-//        Assertions.assertTrue(q1.equals(p1.sealQuest()) || q2.equals(p1.sealQuest()));
-//        Assertions.assertTrue(q1.equals(p1.getYesterQuest()) || q2.equals(p1.getYesterQuest()));
-//        Assertions.assertTrue(q1.getSeal() == 1 || q2.getSeal() == 1);
-//    }
+
+    @Test
+    // I will not test random.
+    void sealQuest() {
+        Assertions.assertTrue(q1.equals(p1.sealQuest()) || q2.equals(p1.sealQuest()));
+        Assertions.assertTrue(q1.equals(p1.getYesterQuest()) || q2.equals(p1.getYesterQuest()));
+    }
 
     @Test
     void newDay() {

@@ -29,7 +29,6 @@ public class Quest extends WriteUp implements NeedFirstToArray {
     // EFFECTS: removes solution for question
     // MODIFIES: this
     public void removeSoln(Soln s) {
-        s.removeQuestion();
         solutions.removeIf(s::equals);
     }
 
