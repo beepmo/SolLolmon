@@ -1,4 +1,4 @@
-package ui;
+package ui.console;
 
 import exceptions.EmptyStoreException;
 import exceptions.NoMatchingResultException;

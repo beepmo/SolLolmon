@@ -64,7 +64,7 @@ public class JsonReader {
             System.out.println("yesterQuest is" + yesterQuest);
             projectFromJson.setYesterQuest(yesterQuest);
         } catch (JSONException e) {
-            System.out.println(e);
+            // do not print anything
         }
 
         JSONArray jsonStore = jsonObject.getJSONArray("store");
