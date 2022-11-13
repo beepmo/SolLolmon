@@ -1,6 +1,4 @@
-package ui;
-
-import ui.console.SolLolmonApp;
+package ui.console;
 
 public class Main {
     public static void main(String[] args) {
