@@ -48,7 +48,7 @@ public class DialogDemo extends JPanel {
                 JLabel.CENTER);
 
         //Lay them out.
-        Border padding = BorderFactory.createEmptyBorder(20,20,5,20);
+        Border padding = BorderFactory.createEmptyBorder(40,40,400,40);
         frequentPanel.setBorder(padding);
         featurePanel.setBorder(padding);
         iconPanel.setBorder(padding);

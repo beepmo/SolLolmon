@@ -20,21 +20,26 @@ public class MenuPanel extends JPanel implements ActionListener {
         addQuestButton = new JButton("Add question");
         addQuestButton.setActionCommand("add");
         add(addQuestButton);
+        addQuestButton.addActionListener(this);
 
         todayButton = new JButton("New day");
         todayButton.setActionCommand("day");
         add(todayButton);
+        todayButton.addActionListener(this);
 
         allQuestButton = new JButton("All questions in store");
         allQuestButton.setActionCommand("all");
         add(allQuestButton);
+        allQuestButton.addActionListener(this);
 
         loadButton = new JButton("Load project");
         loadButton.setActionCommand("load");
         add(loadButton);
+        loadButton.addActionListener(this);
 
         feedbackLabel = new JLabel("Day 1", JLabel.CENTER);
         add(feedbackLabel, BorderLayout.PAGE_END);
+        feedbackLabel.setBorder(BorderFactory.createEmptyBorder(40,40,40,40));
 
         setOpaque(true);
     }
@@ -43,14 +48,11 @@ public class MenuPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "add":
-                String s = (String) JOptionPane.showInputDialog(
-                        frame,
-                        "Complete the sentence:\n"
-                                + "\"Green eggs and...\"",
-                        "Customized Dialog",
-                        JOptionPane.PLAIN_MESSAGE,null,
-                        null,
-                        "ham");
+                // If this case is reached, say so
+                feedbackLabel.setText("Adding a quest!");
+
+                String s = JOptionPane.showInputDialog("Complete the sentence:\n"
+                                + "\"Green eggs and...\"");
 
                 //If a string was returned, say so.
                 if ((s != null) && (s.length() > 0)) {
