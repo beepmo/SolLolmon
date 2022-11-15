@@ -1,9 +1,18 @@
 package ui.gui;
 
+import model.Project;
+import model.User;
+import org.scilab.forge.jlatexmath.TeXConstants;
+import org.scilab.forge.jlatexmath.TeXFormula;
+import org.scilab.forge.jlatexmath.TeXIcon;
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 public class MenuPanel extends JPanel implements ActionListener {
 
@@ -12,7 +21,12 @@ public class MenuPanel extends JPanel implements ActionListener {
     JButton todayButton;
     JButton allQuestButton;
     JButton loadButton;
-    JLabel feedbackLabel;
+    JLabel textLabel;
+
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private Project project;
+    private User user;
 
     public MenuPanel(Frame frame) {
         this.frame = frame;
@@ -37,9 +51,9 @@ public class MenuPanel extends JPanel implements ActionListener {
         add(loadButton);
         loadButton.addActionListener(this);
 
-        feedbackLabel = new JLabel("Day 1", JLabel.CENTER);
-        add(feedbackLabel, BorderLayout.PAGE_END);
-        feedbackLabel.setBorder(BorderFactory.createEmptyBorder(40,40,40,40));
+        textLabel = new JLabel("Day 1", JLabel.CENTER);
+        add(textLabel, BorderLayout.PAGE_END);
+        textLabel.setBorder(BorderFactory.createEmptyBorder(40,40,40,40));
 
         setOpaque(true);
     }
@@ -49,19 +63,21 @@ public class MenuPanel extends JPanel implements ActionListener {
         switch (e.getActionCommand()) {
             case "add":
                 // If this case is reached, say so
-                feedbackLabel.setText("Adding a quest!");
+                textLabel.setText("Adding a quest!");
 
                 String s = JOptionPane.showInputDialog("Complete the sentence:\n"
                                 + "\"Green eggs and...\"");
 
                 //If a string was returned, say so.
                 if ((s != null) && (s.length() > 0)) {
-                    feedbackLabel.setText(s);
-                    return;
+                    JLabel latexLabel = new JLabel();
+                    setLatex(s, latexLabel);
+                    add(latexLabel);
+                    textLabel.setText("Quest added.");
+                    break;
                 }
 
-                //If you're here, the return value was null/empty.
-                //setLabel("Come on, finish the sentence!");
+                textLabel.setText("Cmon, add a tex.");
                 break;
             case "day":
                 break;
@@ -74,4 +90,16 @@ public class MenuPanel extends JPanel implements ActionListener {
         }
 
     }
+
+    // EFFECTS: puts latex on given label
+    private void setLatex(String s, JLabel label) {
+        TeXFormula teXFormula = new TeXFormula(s);
+        TeXIcon teXIcon = teXFormula.createTeXIcon(TeXConstants.STYLE_DISPLAY, 40);
+        BufferedImage bufferedImage = new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR);
+
+        teXIcon.paintIcon(new JLabel(), bufferedImage.getGraphics(), 0, 0);
+        label.setIcon(teXIcon);
+    }
+
+
 }
