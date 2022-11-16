@@ -1,5 +1,7 @@
 package ui.gui;
 
+import exceptions.EmptyStoreException;
+import model.Quest;
 import org.scilab.forge.jlatexmath.TeXConstants;
 import org.scilab.forge.jlatexmath.TeXFormula;
 import org.scilab.forge.jlatexmath.TeXIcon;
@@ -18,6 +20,7 @@ public class MenuPanel extends JPanel implements ActionListener {
     JButton allQuestButton;
     JButton loadButton;
     JLabel textLabel;
+    JLabel latexLabel;
 
     public MenuPanel(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
@@ -46,6 +49,9 @@ public class MenuPanel extends JPanel implements ActionListener {
         add(textLabel, BorderLayout.PAGE_END);
         textLabel.setBorder(BorderFactory.createEmptyBorder(40,40,40,40));
 
+        latexLabel = new JLabel();
+        add(latexLabel);
+
         setOpaque(true);
     }
 
@@ -61,9 +67,7 @@ public class MenuPanel extends JPanel implements ActionListener {
 
                 //If a string was returned, say so.
                 if ((s != null) && (s.length() > 0)) {
-                    JLabel latexLabel = new JLabel();
                     setLatex(s, latexLabel);
-                    add(latexLabel);
                     textLabel.setText("Quest added.");
                     break;
                 }
@@ -71,6 +75,15 @@ public class MenuPanel extends JPanel implements ActionListener {
                 textLabel.setText("Cmon, add a tex.");
                 break;
             case "day":
+                System.out.println("Getting a new day!");
+                System.out.println(mainFrame.model);
+                try {
+                    Quest q = mainFrame.model.project.sealQuest();
+                    setLatex(q.getTex(),latexLabel);
+                } catch (EmptyStoreException ex) {
+                    throw new RuntimeException(ex);
+                    // FIXME in the end
+                }
                 break;
             case "all":
                 break;
@@ -91,6 +104,4 @@ public class MenuPanel extends JPanel implements ActionListener {
         teXIcon.paintIcon(new JLabel(), bufferedImage.getGraphics(), 0, 0);
         label.setIcon(teXIcon);
     }
-
-
 }

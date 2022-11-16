@@ -32,10 +32,10 @@ public class Persistor {
 
     // MODIFIES: this
     // EFFECTS: loads project from file
-    void loadProject(Project project) {
+    void loadProject(Model model) {
         try {
-            project = jsonReader.readProject();
-            System.out.println("Loaded " + project.getName() + " from " + JSON_STORE);
+            model.project = jsonReader.readProject();
+            System.out.println("Loaded " + model.project.getName() + " from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }

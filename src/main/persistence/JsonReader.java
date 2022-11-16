@@ -61,7 +61,6 @@ public class JsonReader {
 
         try {
             Quest yesterQuest = parseQuest(jsonObject.getJSONObject("yesterQuest"));
-            System.out.println("yesterQuest is" + yesterQuest);
             projectFromJson.setYesterQuest(yesterQuest);
         } catch (JSONException e) {
             // do not print anything
