@@ -29,11 +29,15 @@ public class MainFrame extends JFrame {
         }
 
         String name = JOptionPane.showInputDialog(this,
-                "Questions and solutions that you contribute will be accredited to your name. \n Who are you?");
+                "Questions and solutions that you contribute will be accredited to your name. \n"
+                        + "Who are you?");
         model.logUser(new User(name));
 
         menuPanel = new MenuPanel(this);
         add(menuPanel);
+
+        JScrollPane scrollPane = new JScrollPane(menuPanel);
+        add(scrollPane);
 
         pack();
         setDefaultCloseOperation(EXIT_ON_CLOSE);

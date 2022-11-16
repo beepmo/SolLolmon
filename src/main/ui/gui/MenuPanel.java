@@ -98,6 +98,13 @@ public class MenuPanel extends JPanel implements ActionListener {
                 }
                 break;
             case "all":
+                for (Quest q : mainFrame.model.project.getStore()) {
+                    JLabel newLabel = new JLabel("Question by "
+                            + q.getContributor()
+                            + ". Source: \n" + q.getSource());
+                    setLatex(q.getTex(),newLabel);
+                    add(newLabel);
+                }
                 break;
             case "save":
                 System.out.println(mainFrame.model);

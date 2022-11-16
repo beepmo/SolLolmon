@@ -1,0 +1,35 @@
+{
+    "nutrition": [],
+    "birthdate": "Wed Nov 16 15:52:49 PST 2022",
+    "name": "LolmonGotTex!",
+    "yesterQuest": {
+        "nutrition": [],
+        "contributor": {"name": "Smon"},
+        "tex": "\\textrm{Express } \\sin{ix} \\textrm{ in terms of exponentials.}",
+        "solutions": [],
+        "seal": 2,
+        "source": "Conversation",
+        "dateAdded": "Wed Nov 16 15:52:49 PST 2022"
+    },
+    "store": [
+        {
+            "nutrition": [],
+            "contributor": {"name": "Smon"},
+            "tex": "\\textrm{Express } \\sin{ix} \\textrm{ in terms of exponentials.}",
+            "solutions": [],
+            "seal": 2,
+            "source": "Conversation",
+            "dateAdded": "Wed Nov 16 15:52:49 PST 2022"
+        },
+        {
+            "nutrition": [],
+            "contributor": {"name": "Smon"},
+            "tex": "\\textrm{Given segments of length } 1,z, \\textrm{construct with compass and straight edge a segment of length } \\frac{1}{1-z}.",
+            "solutions": [],
+            "seal": 0,
+            "source": "Macroeconmic simple multiplier",
+            "dateAdded": "Wed Nov 16 15:55:16 PST 2022"
+        }
+    ],
+    "day": 2
+}
