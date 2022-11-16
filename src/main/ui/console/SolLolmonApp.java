@@ -248,7 +248,7 @@ public class SolLolmonApp {
         this.user = new User(name);
     }
 
-    // EFFECTS: saves the workroom to file
+    // EFFECTS: saves the project to file
     private void saveProject() {
         try {
             jsonWriter.open();
@@ -261,7 +261,7 @@ public class SolLolmonApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: loads prokect from file
+    // EFFECTS: loads project from file
     private void loadProject() {
         try {
             project = jsonReader.readProject();

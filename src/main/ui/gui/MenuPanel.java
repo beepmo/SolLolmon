@@ -1,12 +1,8 @@
 package ui.gui;
 
-import model.Project;
-import model.User;
 import org.scilab.forge.jlatexmath.TeXConstants;
 import org.scilab.forge.jlatexmath.TeXFormula;
 import org.scilab.forge.jlatexmath.TeXIcon;
-import persistence.JsonReader;
-import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,20 +12,15 @@ import java.awt.image.BufferedImage;
 
 public class MenuPanel extends JPanel implements ActionListener {
 
-    protected Frame frame;
+    protected MainFrame mainFrame;
     JButton addQuestButton;
     JButton todayButton;
     JButton allQuestButton;
     JButton loadButton;
     JLabel textLabel;
 
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
-    private Project project;
-    private User user;
-
-    public MenuPanel(Frame frame) {
-        this.frame = frame;
+    public MenuPanel(MainFrame mainFrame) {
+        this.mainFrame = mainFrame;
 
         addQuestButton = new JButton("Add question");
         addQuestButton.setActionCommand("add");

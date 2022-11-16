@@ -32,7 +32,7 @@ public class DialogDemo extends JPanel {
     String moreDialogDesc = "Some more dialogs";
     CustomDialog customDialog;
 
-    /** Creates the GUI shown inside the frame's content pane. */
+    /** Creates the GUI shown inside the mainFrame's content pane. */
     public DialogDemo(JFrame frame) {
         super(new BorderLayout());
         this.frame = frame;
@@ -69,7 +69,7 @@ public class DialogDemo extends JPanel {
         label.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
     }
 
-    /** Sets the text displayed at the bottom of the frame. */
+    /** Sets the text displayed at the bottom of the mainFrame. */
     void setLabel(String newText) {
         label.setText(newText);
     }
