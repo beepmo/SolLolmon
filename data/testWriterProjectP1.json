@@ -1,0 +1,42 @@
+{
+    "nutrition": [],
+    "birthdate": "Thu Oct 27 22:18:38 PDT 2022",
+    "name": "SolLolmon",
+    "yesterQuest": "",
+    "store": [
+        {
+            "nutrition": [],
+            "contributor": {"name": "Smon"},
+            "tex": "Express sin(ix) in terms of exponentials.",
+            "solutions": [
+                {
+                    "nutrition": [],
+                    "contributor": {"name": "Smon"},
+                    "tex": "Euler's identity",
+                    "source": "The same conversation",
+                    "dateAdded": "Thu Oct 27 22:18:38 PDT 2022"
+                },
+                {
+                    "nutrition": [],
+                    "contributor": {"name": "Smon"},
+                    "tex": "Euler's identity",
+                    "source": "The same conversation",
+                    "dateAdded": "Thu Oct 27 22:18:38 PDT 2022"
+                }
+            ],
+            "seal": 0,
+            "source": "Conversation",
+            "dateAdded": "Thu Oct 27 22:18:38 PDT 2022"
+        },
+        {
+            "nutrition": [],
+            "contributor": {"name": "Smon"},
+            "tex": "Given a compass and straight edge, and segments of length 1, z, z < 1, construct a segment of length ∑^∞_i=0 z^n.",
+            "solutions": [],
+            "seal": 0,
+            "source": "Macroeconomics simple multiplier",
+            "dateAdded": "Thu Oct 27 22:18:38 PDT 2022"
+        }
+    ],
+    "day": 0
+}

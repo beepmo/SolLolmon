@@ -15,4 +15,13 @@ public class Model {
     void loadProject() {
         persistor.loadProject(this);
     }
+
+    void createProject(String title) {
+        System.out.println("Creating new project: " + title);
+        this.project = new Project(title);
+    }
+
+    void logUser() {
+        //
+    }
 }
