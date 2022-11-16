@@ -81,7 +81,7 @@ public class JsonReader {
         Quest questFromJson = new Quest(user);
 
         questFromJson.setSource(jsonObject.getString("source"));
-        questFromJson.scanTex(jsonObject.getString("tex"));
+        questFromJson.setTex(jsonObject.getString("tex"));
         questFromJson.setSeal(jsonObject.getInt("seal"));
 
         JSONArray jsonSolutions = jsonObject.getJSONArray("solutions");
@@ -98,7 +98,7 @@ public class JsonReader {
         User user = parseUser(jsonObject.getJSONObject("contributor"));
         Soln solnFromJson = new Soln(user);
         solnFromJson.setSource(jsonObject.getString("source"));
-        solnFromJson.scanTex(jsonObject.getString("tex"));
+        solnFromJson.setTex(jsonObject.getString("tex"));
         return solnFromJson;
     }
 

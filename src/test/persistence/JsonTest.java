@@ -26,22 +26,22 @@ public class JsonTest {
 
         q1FromSmon = new Quest(userFromSmon);
         p1.addQuestion(q1FromSmon);
-        q1FromSmon.scanTex("Express sin(ix) in terms of exponentials.");
+        q1FromSmon.setTex("Express sin(ix) in terms of exponentials.");
         q1FromSmon.setSource("Conversation");
 
         s1FromSmon = new Soln(userFromSmon);
         q1FromSmon.addSoln(s1FromSmon);
-        s1FromSmon.scanTex("Euler's identity");
+        s1FromSmon.setTex("Euler's identity");
         s1FromSmon.setSource("The same conversation");
 
         s2FromSmon = new Soln(userFromSmon);
         q1FromSmon.addSoln(s1FromSmon);
-        s2FromSmon.scanTex("Match Taylor expansions");
+        s2FromSmon.setTex("Match Taylor expansions");
         s2FromSmon.setSource("One side of that conversation");
 
         q2FromSmon = new Quest(userFromSmon);
         p1.addQuestion(q2FromSmon);
-        q2FromSmon.scanTex("Given a compass and straight edge, and segments of length 1, z, z < 1, construct a segment of length " +
+        q2FromSmon.setTex("Given a compass and straight edge, and segments of length 1, z, z < 1, construct a segment of length " +
                 "∑^∞_i=0 z^n.");
         q2FromSmon.setSource("Macroeconomics simple multiplier");
 

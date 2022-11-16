@@ -18,10 +18,7 @@ public class LatexCompiler extends JFrame {
     public static void main(String[] args) {
         JFrame app = new LatexCompiler();
 
-        String tex = "\\textrm{How do you like a string newline?}"
-                + "\\begin{align} \\begin{matrix} 1 & 0 \\\\ 0 & 1 \\end{matrix} \\end{align}"
-                + "\n And see if this is on a new line"
-                + "\n $$\\Sigma$$";
+        String tex = "\\textrm{How do you like a string newline?}";
         TeXFormula teXFormula = new TeXFormula(tex);
         TeXIcon teXIcon = teXFormula.createTeXIcon(TeXConstants.STYLE_DISPLAY, 40);
         BufferedImage bufferedImage = new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR);

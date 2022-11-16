@@ -18,7 +18,7 @@ public class MenuPanel extends JPanel implements ActionListener {
     JButton addQuestButton;
     JButton todayButton;
     JButton allQuestButton;
-    JButton loadButton;
+    JButton saveButton;
     JLabel textLabel;
     JLabel latexLabel;
 
@@ -40,12 +40,12 @@ public class MenuPanel extends JPanel implements ActionListener {
         add(allQuestButton);
         allQuestButton.addActionListener(this);
 
-        loadButton = new JButton("Load project");
-        loadButton.setActionCommand("load");
-        add(loadButton);
-        loadButton.addActionListener(this);
+        saveButton = new JButton("Save project");
+        saveButton.setActionCommand("save");
+        add(saveButton);
+        saveButton.addActionListener(this);
 
-        textLabel = new JLabel("Day 1", JLabel.CENTER);
+        textLabel = new JLabel("Day " + mainFrame.model.project.getDay(), JLabel.CENTER);
         add(textLabel, BorderLayout.PAGE_END);
         textLabel.setBorder(BorderFactory.createEmptyBorder(40,40,40,40));
 
@@ -67,19 +67,31 @@ public class MenuPanel extends JPanel implements ActionListener {
 
                 //If a string was returned, say so.
                 if ((s != null) && (s.length() > 0)) {
+                    System.out.println("Tex input received: " + s);
                     setLatex(s, latexLabel);
+                    Quest newQuest = new Quest(mainFrame.model.user);
+                    newQuest.setTex(s);
+                    mainFrame.model.project.addQuestion(newQuest);
                     textLabel.setText("Quest added.");
-                    break;
+
+                    String source = JOptionPane.showInputDialog(
+                            "Please describe how this question came to you.\n"
+                                    + "(Book, course, inspiration?)\n"
+                                    + "Enter source:\n");
+                    newQuest.setSource(source);
+                } else {
+                    textLabel.setText("Cmon, can't make a quest without tex.");
                 }
 
-                textLabel.setText("Cmon, add a tex.");
                 break;
             case "day":
                 System.out.println("Getting a new day!");
-                System.out.println(mainFrame.model);
                 try {
                     Quest q = mainFrame.model.project.sealQuest();
                     setLatex(q.getTex(),latexLabel);
+
+                    mainFrame.model.project.newDay();
+                    textLabel.setText("Day " + mainFrame.model.project.getDay());
                 } catch (EmptyStoreException ex) {
                     throw new RuntimeException(ex);
                     // FIXME in the end
@@ -87,7 +99,10 @@ public class MenuPanel extends JPanel implements ActionListener {
                 break;
             case "all":
                 break;
-            case "load":
+            case "save":
+                System.out.println(mainFrame.model);
+                mainFrame.model.saveProject(mainFrame.model);
+                break;
 
             default:
                 // pass

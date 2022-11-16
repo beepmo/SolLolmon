@@ -133,7 +133,7 @@ public class SolLolmonApp {
 
             print("Enter your solution!\n" + "As of now, as plain text without line breaks please.");
             String tex = input.next();
-            s.scanTex(tex);
+            s.setTex(tex);
             print("Text scanned.");
 
             print("Please describe how this solution came to you.\n"
@@ -181,7 +181,7 @@ public class SolLolmonApp {
                 + "(Latex support coming soon!)\n"
                 + "Enter question:\n");
         String tex = input.next();
-        q.scanTex(tex);
+        q.setTex(tex);
 
         print("Please describe how this question came to you.\n"
                 + "(Book, course, inspiration?)\n"

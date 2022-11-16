@@ -35,8 +35,8 @@ class ProjectTest extends ModelTest {
 
     @Test
     void searchProject() {
-        q1.scanTex("Gu dao xi feng shou ma.");
-        q2.scanTex("Xi yang xi xia.");
+        q1.setTex("Gu dao xi feng shou ma.");
+        q2.setTex("Xi yang xi xia.");
 
         try {
             Assertions.assertEquals(2,p1.searchProject("xi").size());

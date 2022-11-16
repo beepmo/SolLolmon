@@ -21,7 +21,7 @@ public class WriteUp {
 
     // EFFECTS: create writeup (likely String or tex File from console)
     // MODIFIES: this
-    public void scanTex(String s) {
+    public void setTex(String s) {
         this.tex = s;
     }
 

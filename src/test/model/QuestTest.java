@@ -77,9 +77,9 @@ class QuestTest {
 
     @Test
     void scanTex() {
-        q1.scanTex("q1 body");
+        q1.setTex("q1 body");
         assertEquals("q1 body",q1.getTex());
-        s1.scanTex("s1 body");
+        s1.setTex("s1 body");
         assertEquals("s1 body",s1.getTex());
     }
 
