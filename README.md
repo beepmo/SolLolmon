@@ -69,8 +69,16 @@ As a user, I want to load the entire project from file.
 
 # Instructions for Grader
 
-- You can generate the first required event related to adding Xs to a Y by...
-- You can generate the second required event related to adding Xs to a Y by...
-- You can locate my visual component by...
-- You can save the state of my application by...
-- You can reload the state of my application by...
+- You can generate the first required event related to adding Xs to a Y by the "Add question" button. 
+Input some "inverted" inline latex: all text to be enclosed in \textrm and all math to just be.
+  - Example input: 
+  
+     \textrm{Integrate } \int \sqrt{1+e^x} dx.
+- You can generate the second required event related to adding Xs to a Y by clicking the "New day" button. 
+This requires store to be non-empty.
+A question will be sealed as the question of the day.
+- You can locate my visual component by the beautifully rendered latex for
+any question that you add (button: "Add question") or get for the day (button: "New day"), 
+or all the questions in store (button: "Get store"). 
+- You can save the state of my application by clicking the save button.
+- You can reload the state of my application by selecting yes when prompted.
