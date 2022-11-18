@@ -60,7 +60,7 @@ public class SolLolmonApp {
                 break;
             case "d":
                 postSoln();
-                project.newDay();
+                project.incrementDay();
                 postQuest();
                 break;
             case "p":
@@ -101,9 +101,8 @@ public class SolLolmonApp {
     // EFFECTS: prepares and posts new question of the day
     // MODIFIES: this
     private void postQuest() {
-        Quest q = null;
         try {
-            q = project.sealQuest();
+            Quest q = project.sealQuest();
             presentQuest(q);
         } catch (EmptyStoreException e) {
             print("Store is empty. To call it a day, add at least one question.");

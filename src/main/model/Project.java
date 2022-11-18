@@ -89,7 +89,7 @@ public class Project implements NeedFirstToArray {
 
     // EFFECTS: increments day count
     // MODIFIES: this
-    public void newDay() {
+    public void incrementDay() {
         day++;
     }
 

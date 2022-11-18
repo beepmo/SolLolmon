@@ -1,6 +1,6 @@
 {
     "nutrition": [],
-    "birthdate": "Wed Nov 16 15:52:49 PST 2022",
+    "birthdate": "Thu Nov 17 22:50:57 PST 2022",
     "name": "LolmonGotTex!",
     "yesterQuest": {
         "nutrition": [],
@@ -9,7 +9,7 @@
         "solutions": [],
         "seal": 2,
         "source": "Conversation",
-        "dateAdded": "Wed Nov 16 15:52:49 PST 2022"
+        "dateAdded": "Thu Nov 17 22:50:57 PST 2022"
     },
     "store": [
         {
@@ -19,7 +19,7 @@
             "solutions": [],
             "seal": 2,
             "source": "Conversation",
-            "dateAdded": "Wed Nov 16 15:52:49 PST 2022"
+            "dateAdded": "Thu Nov 17 22:50:57 PST 2022"
         },
         {
             "nutrition": [],
@@ -28,7 +28,25 @@
             "solutions": [],
             "seal": 0,
             "source": "Macroeconmic simple multiplier",
-            "dateAdded": "Wed Nov 16 15:55:16 PST 2022"
+            "dateAdded": "Thu Nov 17 22:50:57 PST 2022"
+        },
+        {
+            "nutrition": [],
+            "contributor": {"name": "Smon"},
+            "tex": "\\textrm{Calculate } \\det|aJ+bI| \\textrm{ as a function of } a,b, \\textrm{ where } J \\textrm{ is the matrix of all one's.}",
+            "solutions": [],
+            "seal": 0,
+            "source": "Math 223 assignment",
+            "dateAdded": "Thu Nov 17 22:50:57 PST 2022"
+        },
+        {
+            "nutrition": [],
+            "contributor": {"name": "Smon"},
+            "tex": "\\textrm{Construct tangent lines from given point to given circle.}",
+            "solutions": [],
+            "seal": 0,
+            "source": "Synthetic geometry",
+            "dateAdded": "Thu Nov 17 22:51:45 PST 2022"
         }
     ],
     "day": 2

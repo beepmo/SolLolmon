@@ -95,7 +95,7 @@ class ProjectTest extends ModelTest {
 
     @Test
     void newDay() {
-        p1.newDay();
+        p1.incrementDay();
         Assertions.assertEquals(1,p1.getDay());
     }
 }

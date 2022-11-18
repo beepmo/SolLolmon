@@ -71,9 +71,9 @@ As a user, I want to load the entire project from file.
 
 - You can generate the first required event related to adding Xs to a Y by the "Add question" button. 
 Input some "inverted" inline latex: all text to be enclosed in \textrm and all math to just be.
-  - Example input: 
-  
-     \textrm{Integrate } \int \sqrt{1+e^x} dx.
+  - For example paste this into dialog: 
+
+     \textrm{Prove Cayley-Hamilton for } 2 \times 2 \textrm{matrices: }A^2 - \mathrm{tr}(A) + det|A|I = 0.
 - You can generate the second required event related to adding Xs to a Y by clicking the "New day" button. 
 This requires store to be non-empty.
 A question will be sealed as the question of the day.

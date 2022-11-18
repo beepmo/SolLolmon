@@ -6,11 +6,11 @@ import persistence.JsonWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-// implements persistence for class Model
+// implements persistence inside Model
 public class Persistor {
     private static final String JSON_STORE = "./data/textrmProject.json";
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
+    private final JsonWriter jsonWriter;
+    private final JsonReader jsonReader;
 
     public Persistor() {
         jsonWriter = new JsonWriter(JSON_STORE);
