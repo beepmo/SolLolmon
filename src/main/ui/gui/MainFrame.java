@@ -25,7 +25,7 @@ public class MainFrame extends JFrame {
         add(new JScrollPane(menuPanel));
 
         // print event log on close
-        WindowListener listener = new WindowAdapter() {
+        WindowListener windowListener = new WindowAdapter() {
             public void windowClosing(WindowEvent evt) {
                 JFrame frame = (JFrame) evt.getSource();
                 System.out.println("Closing frame " + frame.getTitle() + ".\n");
@@ -38,6 +38,7 @@ public class MainFrame extends JFrame {
                 }
             }
         };
+        addWindowListener(windowListener);
 
         pack();
         // setDefaultCloseOperation(EXIT_ON_CLOSE);

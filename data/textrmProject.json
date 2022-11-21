@@ -1,15 +1,15 @@
 {
     "nutrition": [],
-    "birthdate": "Sun Nov 20 21:08:15 PST 2022",
+    "birthdate": "Sun Nov 20 21:15:03 PST 2022",
     "name": "LolmonGotTex!",
     "yesterQuest": {
         "nutrition": [],
         "contributor": {"name": "Smon"},
-        "tex": "\\textrm{Given segments of length } 1,z, \\textrm{construct with compass and straight edge a segment of length } \\frac{1}{1-z}.",
+        "tex": "\\textrm{Express } \\sin{ix} \\textrm{ in terms of exponentials.}",
         "solutions": [],
-        "seal": 1,
-        "source": "Macroeconmic simple multiplier",
-        "dateAdded": "Sun Nov 20 21:08:15 PST 2022"
+        "seal": 3,
+        "source": "Conversation",
+        "dateAdded": "Sun Nov 20 21:15:03 PST 2022"
     },
     "store": [
         {
@@ -17,9 +17,9 @@
             "contributor": {"name": "Smon"},
             "tex": "\\textrm{Express } \\sin{ix} \\textrm{ in terms of exponentials.}",
             "solutions": [],
-            "seal": 2,
+            "seal": 3,
             "source": "Conversation",
-            "dateAdded": "Sun Nov 20 21:08:15 PST 2022"
+            "dateAdded": "Sun Nov 20 21:15:03 PST 2022"
         },
         {
             "nutrition": [],
@@ -28,7 +28,7 @@
             "solutions": [],
             "seal": 1,
             "source": "Macroeconmic simple multiplier",
-            "dateAdded": "Sun Nov 20 21:08:15 PST 2022"
+            "dateAdded": "Sun Nov 20 21:15:03 PST 2022"
         },
         {
             "nutrition": [],
@@ -37,7 +37,7 @@
             "solutions": [],
             "seal": 0,
             "source": "Math 223 assignment",
-            "dateAdded": "Sun Nov 20 21:08:15 PST 2022"
+            "dateAdded": "Sun Nov 20 21:15:03 PST 2022"
         },
         {
             "nutrition": [],
@@ -46,8 +46,8 @@
             "solutions": [],
             "seal": 0,
             "source": "Synthetic geometry",
-            "dateAdded": "Sun Nov 20 21:08:15 PST 2022"
+            "dateAdded": "Sun Nov 20 21:15:03 PST 2022"
         }
     ],
-    "day": 3
+    "day": 4
 }
