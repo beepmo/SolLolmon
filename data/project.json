@@ -1,21 +1,21 @@
 {
     "nutrition": [],
-    "birthdate": "Mon Oct 31 11:58:13 PDT 2022",
+    "birthdate": "Sun Nov 20 20:47:38 PST 2022",
     "name": "SolLolmon",
     "yesterQuest": {
         "nutrition": [],
-        "contributor": {"name": "Smon"},
-        "tex": "Express sin(ix) in terms of exponentials.",
+        "contributor": {"name": "Lolmon"},
+        "tex": "Consider a convex n-gon. Let h be a positive number. Build a rectangle on each side of the n-gon, with base equal to the side and height h, overlapping the interior of the n-gon. Prove there exists h for which every point in the n-gon is covered in rectangle and the total area of rectangles is less than twice the area of the n-gon.",
         "solutions": [{
             "nutrition": [],
-            "contributor": {"name": "Smon"},
-            "tex": "Euler's identity",
-            "source": "/that same conversation",
-            "dateAdded": "Mon Oct 31 11:58:13 PDT 2022"
+            "contributor": {"name": "Lolmon"},
+            "tex": ": consider the extreme case n to infty so that the n-gon becomes a circle.",
+            "source": "comment on AoPS",
+            "dateAdded": "Sun Nov 20 20:47:38 PST 2022"
         }],
-        "seal": 4,
-        "source": "Conversation",
-        "dateAdded": "Mon Oct 31 11:58:13 PDT 2022"
+        "seal": 5,
+        "source": "Arvin's contribution to UBC math circles, from AoPS",
+        "dateAdded": "Sun Nov 20 20:47:38 PST 2022"
     },
     "store": [
         {
@@ -27,11 +27,11 @@
                 "contributor": {"name": "Smon"},
                 "tex": "Euler's identity",
                 "source": "/that same conversation",
-                "dateAdded": "Mon Oct 31 11:58:13 PDT 2022"
+                "dateAdded": "Sun Nov 20 20:47:38 PST 2022"
             }],
             "seal": 4,
             "source": "Conversation",
-            "dateAdded": "Mon Oct 31 11:58:13 PDT 2022"
+            "dateAdded": "Sun Nov 20 20:47:38 PST 2022"
         },
         {
             "nutrition": [],
@@ -42,11 +42,11 @@
                 "contributor": {"name": "Lolmon"},
                 "tex": ": consider the extreme case n to infty so that the n-gon becomes a circle.",
                 "source": "comment on AoPS",
-                "dateAdded": "Mon Oct 31 11:58:13 PDT 2022"
+                "dateAdded": "Sun Nov 20 20:47:38 PST 2022"
             }],
-            "seal": 4,
+            "seal": 5,
             "source": "Arvin's contribution to UBC math circles, from AoPS",
-            "dateAdded": "Mon Oct 31 11:58:13 PDT 2022"
+            "dateAdded": "Sun Nov 20 20:47:38 PST 2022"
         },
         {
             "nutrition": [],
@@ -55,17 +55,17 @@
             "solutions": [],
             "seal": 0,
             "source": "Macroeconmics simple multiplier",
-            "dateAdded": "Mon Oct 31 11:58:13 PDT 2022"
+            "dateAdded": "Sun Nov 20 20:47:38 PST 2022"
         },
         {
             "nutrition": [],
             "contributor": {"name": "Lolmon"},
             "tex": "help",
             "solutions": [],
-            "seal": 0,
+            "seal": 1,
             "source": "stress",
-            "dateAdded": "Mon Oct 31 11:59:16 PDT 2022"
+            "dateAdded": "Sun Nov 20 20:47:38 PST 2022"
         }
     ],
-    "day": 8
+    "day": 10
 }

@@ -1,15 +1,15 @@
 {
     "nutrition": [],
-    "birthdate": "Thu Nov 17 22:50:57 PST 2022",
+    "birthdate": "Sun Nov 20 21:08:15 PST 2022",
     "name": "LolmonGotTex!",
     "yesterQuest": {
         "nutrition": [],
         "contributor": {"name": "Smon"},
-        "tex": "\\textrm{Express } \\sin{ix} \\textrm{ in terms of exponentials.}",
+        "tex": "\\textrm{Given segments of length } 1,z, \\textrm{construct with compass and straight edge a segment of length } \\frac{1}{1-z}.",
         "solutions": [],
-        "seal": 2,
-        "source": "Conversation",
-        "dateAdded": "Thu Nov 17 22:50:57 PST 2022"
+        "seal": 1,
+        "source": "Macroeconmic simple multiplier",
+        "dateAdded": "Sun Nov 20 21:08:15 PST 2022"
     },
     "store": [
         {
@@ -19,16 +19,16 @@
             "solutions": [],
             "seal": 2,
             "source": "Conversation",
-            "dateAdded": "Thu Nov 17 22:50:57 PST 2022"
+            "dateAdded": "Sun Nov 20 21:08:15 PST 2022"
         },
         {
             "nutrition": [],
             "contributor": {"name": "Smon"},
             "tex": "\\textrm{Given segments of length } 1,z, \\textrm{construct with compass and straight edge a segment of length } \\frac{1}{1-z}.",
             "solutions": [],
-            "seal": 0,
+            "seal": 1,
             "source": "Macroeconmic simple multiplier",
-            "dateAdded": "Thu Nov 17 22:50:57 PST 2022"
+            "dateAdded": "Sun Nov 20 21:08:15 PST 2022"
         },
         {
             "nutrition": [],
@@ -37,7 +37,7 @@
             "solutions": [],
             "seal": 0,
             "source": "Math 223 assignment",
-            "dateAdded": "Thu Nov 17 22:50:57 PST 2022"
+            "dateAdded": "Sun Nov 20 21:08:15 PST 2022"
         },
         {
             "nutrition": [],
@@ -46,8 +46,8 @@
             "solutions": [],
             "seal": 0,
             "source": "Synthetic geometry",
-            "dateAdded": "Thu Nov 17 22:51:45 PST 2022"
+            "dateAdded": "Sun Nov 20 21:08:15 PST 2022"
         }
     ],
-    "day": 2
+    "day": 3
 }

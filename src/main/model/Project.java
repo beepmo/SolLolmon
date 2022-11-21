@@ -27,13 +27,15 @@ public class Project implements NeedFirstToArray {
         this.day = 0;
         this.store = new ArrayList<>();
         this.birthdate = new Date();
+        EventLog.getInstance().logEvent(new Event("Created project: " + name));
     }
 
     // EFFECTS: adds a question to the store
     // REQUIRES: the new question's tex does not match verbatim a question in store
-    // TODO implement connecting a question to another
     public void addQuestion(Quest q) {
         store.add(q);
+        EventLog.getInstance().logEvent(new Event("Added question by "
+                + q.getContributor().getName() + " from source \"" + q.getSource() + "\" to " + this.name));
     }
 
     // REQUIRES: store must have at least one question
@@ -45,7 +47,6 @@ public class Project implements NeedFirstToArray {
         Random random = new Random();
         int randIndex = random.nextInt(store.size());
         return store.get(randIndex);
-
     }
 
     // EFFECTS: returns a list of questions that contain a given string
@@ -70,6 +71,9 @@ public class Project implements NeedFirstToArray {
         Quest chosen = chooseQuestion();
         chosen.incrementSeal();
         setYesterQuest(chosen);
+
+        EventLog.getInstance().logEvent(new Event("Sealed a question to call it a day " + this.day + "."));
+
         return chosen;
     }
 
@@ -130,6 +134,8 @@ public class Project implements NeedFirstToArray {
         }
         json.put("birthdate", birthdate);
         json.put("nutrition", nutrition);
+
+        EventLog.getInstance().logEvent(new Event("Saved project: " + name));
 
         return json;
     }

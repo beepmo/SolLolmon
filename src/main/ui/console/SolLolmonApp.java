@@ -40,12 +40,23 @@ public class SolLolmonApp {
 
             if (command.equals("q")) {
                 keepGoing = false;
+                printLog();
             } else {
                 processCommand(command);
             }
         }
 
         System.out.println("\nGoodbye!");
+    }
+
+    private void printLog() {
+        print("=====================================================");
+        print("Event log of all that happened this session: ");
+
+        EventLog el = EventLog.getInstance();
+        for (Event e : el) {
+            print(e.getDescription());
+        }
     }
 
     // MODIFIES: this

@@ -82,3 +82,27 @@ any question that you add (button: "Add question") or get for the day (button: "
 or all the questions in store (button: "Get store"). 
 - You can save the state of my application by clicking the save button.
 - You can reload the state of my application by selecting yes when prompted.
+
+# Phase 4: Task 2
+
+Question: load from file is not distinguished from user create exactly as remembered
+
+Below is console output on quit:
+
+    =====================================================
+    
+    Event log of all that happened this session:
+    
+    Created project: SolLolmon
+    
+    Added question by Smon from source "Conversation" to SolLolmon
+    
+    Added question by Lolmon from source "Arvin's contribution to UBC math circles, from AoPS" to SolLolmon
+    
+    Added question by Lolmon from source "Macroeconmics simple multiplier" to SolLolmon
+    
+    Added question by Lolmon from source "stress" to SolLolmon
+    
+    Sealed a question to call it a day 10.
+    
+    Saved project: SolLolmon
