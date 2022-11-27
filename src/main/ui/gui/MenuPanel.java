@@ -108,7 +108,7 @@ public class MenuPanel extends JPanel implements ActionListener {
 
         //If a string was returned, say so.
         if ((s != null) && (s.length() > 0)) {
-            System.out.println("Tex input received: " + s);
+            // System.out.println("Tex input received: " + s);
             setLatex(s, latexLabel);
             Quest newQuest = new Quest(mainFrame.model.user);
             newQuest.setTex(s);
@@ -127,7 +127,7 @@ public class MenuPanel extends JPanel implements ActionListener {
 
     // EFFECTS: post a question from store and increment day number
     void newDay() {
-        System.out.println("Getting a new day!");
+        // System.out.println("Getting a new day!");
         try {
             Quest q = mainFrame.model.project.sealQuest();
             setLatex(q.getTex(),latexLabel);

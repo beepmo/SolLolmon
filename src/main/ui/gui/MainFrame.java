@@ -28,7 +28,7 @@ public class MainFrame extends JFrame {
         WindowListener windowListener = new WindowAdapter() {
             public void windowClosing(WindowEvent evt) {
                 JFrame frame = (JFrame) evt.getSource();
-                System.out.println("Closing frame " + frame.getTitle() + ".\n");
+                // System.out.println("Closing frame " + frame.getTitle() + ".\n");
 
                 System.out.println("\nEvent log of all that happened this session: \n");
 

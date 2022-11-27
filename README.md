@@ -85,8 +85,6 @@ or all the questions in store (button: "Get store").
 
 # Phase 4: Task 2
 
-Question: load from file is not distinguished from user create exactly as remembered
-
 Below is console output on quit:
 
     =====================================================
@@ -106,3 +104,12 @@ Below is console output on quit:
     Sealed a question to call it a day 10.
     
     Saved project: SolLolmon
+
+# Phase 4: Task 3
+
+Questions: 
+- For ui classes which need user input in an `init` method 
+to set up fields that have to be non-null for the application to run, 
+do associations count as "not null after constructor complete"?
+- Would `Main()` be included in UML?
+- Are `Event` and `EventLog` dependencies of the logging part of model?

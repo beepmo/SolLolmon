@@ -72,7 +72,7 @@ public class Project implements NeedFirstToArray {
         chosen.incrementSeal();
         setYesterQuest(chosen);
 
-        EventLog.getInstance().logEvent(new Event("Sealed a question to call it a day " + this.day + "."));
+        EventLog.getInstance().logEvent(new Event("Sealed a question to call it a day: day " + this.day + "."));
 
         return chosen;
     }

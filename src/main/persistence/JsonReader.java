@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 
 // Represents a reader that reads workroom from JSON data stored in file
 public class JsonReader {
-    private String source;
+    private final String source;
 
     // EFFECTS: constructs reader to read from source file
     public JsonReader(String source) {
@@ -43,13 +43,14 @@ public class JsonReader {
         return parseUser(jsonObject);
     }
 
+    // EFFECTS: reads project from file and returns it;
+    // throws IOException if an error occurs reading data from file
     public Project readProject() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseProject(jsonObject);
     }
 
-    // TODO: Project & WriteUp: parse hashset || date
 // Parsing begins. for each class
     // EFFECTS: parses project from JSON object and returns it
     private Project parseProject(JSONObject jsonObject) {

@@ -23,7 +23,7 @@ public class Persistor {
             jsonWriter.open();
             jsonWriter.write(model.project);
             jsonWriter.close();
-            System.out.println("Saved " + model.project.getName() + " to " + JSON_STORE);
+            // System.out.println("Saved " + model.project.getName() + " to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
@@ -34,7 +34,7 @@ public class Persistor {
     void loadProject(Model model) {
         try {
             model.project = jsonReader.readProject();
-            System.out.println("Loaded " + model.project.getName() + " from " + JSON_STORE);
+            // System.out.println("Loaded " + model.project.getName() + " from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
