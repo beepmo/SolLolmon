@@ -113,3 +113,8 @@ to set up fields that have to be non-null for the application to run,
 do associations count as "not null after constructor complete"?
 - Would `Main()` be included in UML?
 - Are `Event` and `EventLog` dependencies of the logging part of model?
+
+A lot of features have been removed since the inception of this project, 
+such as bi-directionality for a user to see their cumulative contributions. 
+Vestigial traces to clean up: 
+- Field `nutrition`.

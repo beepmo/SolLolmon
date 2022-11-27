@@ -202,7 +202,6 @@ public class SolLolmonApp {
 
         print("Add relevant tags? (y/n)"
                 + "\n Right now, n has been selected for you.");
-        // TODO support nutrition
     }
 
     // EFFECTS: displays menu of options to user
