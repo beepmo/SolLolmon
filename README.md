@@ -107,14 +107,31 @@ Below is console output on quit:
 
 # Phase 4: Task 3
 
-Questions: 
+UML Diagram
 - For ui classes which need user input in an `init` method 
 to set up fields that have to be non-null for the application to run, 
-do associations count as "not null after constructor complete"?
-- Would `Main()` be included in UML?
-- Are `Event` and `EventLog` dependencies of the logging part of model?
+we count associations as "not null after constructor complete".
 
+### Potential improvements
+#### Refactor to save multiple projects
+In the GUI, the way that the runner knows about the SolLolmon model is having a field of Model object, 
+which has one field respectively of `Project`, `User`, and `Persistor`. 
+The `Persistor` class contains a `JsonReader` and a `JsonWriter` with the same `source`, 
+currently a constant relative path for every project and user. 
+The `Persistor` constructor could be improved by taking a `String` argument (generate by project name) to use as `source`.
+This would allow sessions to load, work on, and save different projects.
+
+The console UI should also use the `Persistor` class instead of connecting to `JsonReader` and `JsonWriter` directly
+for this feature.
+
+#### Optimize constructors
+Does a `WriteUp` really need to be constructed with a `User` argument? I am learning that constructors should 
+take as few arguments as possible, leaving the rest to setters.
+
+#### Vestigial traces
 A lot of features have been removed since the inception of this project, 
 such as bi-directionality for a user to see their cumulative contributions. 
 Vestigial traces to clean up: 
 - Field `nutrition`.
+- Quick fix: add a latex inverter so the user can input normal instead of inverted latex in GUI.
+- Investigate: What does `setText` do to JLatexLabel?

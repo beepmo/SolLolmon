@@ -1,6 +1,6 @@
 {
     "nutrition": [],
-    "birthdate": "Mon Nov 21 11:30:43 PST 2022",
+    "birthdate": "Sun Nov 27 13:38:40 PST 2022",
     "name": "LolmonGotTex!",
     "yesterQuest": {
         "nutrition": [],
@@ -9,7 +9,7 @@
         "solutions": [],
         "seal": 1,
         "source": "Synthetic geometry",
-        "dateAdded": "Mon Nov 21 11:30:43 PST 2022"
+        "dateAdded": "Sun Nov 27 13:38:40 PST 2022"
     },
     "store": [
         {
@@ -19,7 +19,7 @@
             "solutions": [],
             "seal": 3,
             "source": "Conversation",
-            "dateAdded": "Mon Nov 21 11:30:43 PST 2022"
+            "dateAdded": "Sun Nov 27 13:38:40 PST 2022"
         },
         {
             "nutrition": [],
@@ -28,7 +28,7 @@
             "solutions": [],
             "seal": 1,
             "source": "Macroeconmic simple multiplier",
-            "dateAdded": "Mon Nov 21 11:30:43 PST 2022"
+            "dateAdded": "Sun Nov 27 13:38:40 PST 2022"
         },
         {
             "nutrition": [],
@@ -37,7 +37,7 @@
             "solutions": [],
             "seal": 0,
             "source": "Math 223 assignment",
-            "dateAdded": "Mon Nov 21 11:30:43 PST 2022"
+            "dateAdded": "Sun Nov 27 13:38:40 PST 2022"
         },
         {
             "nutrition": [],
@@ -46,7 +46,7 @@
             "solutions": [],
             "seal": 1,
             "source": "Synthetic geometry",
-            "dateAdded": "Mon Nov 21 11:30:43 PST 2022"
+            "dateAdded": "Sun Nov 27 13:38:40 PST 2022"
         },
         {
             "nutrition": [],
@@ -55,7 +55,16 @@
             "solutions": [],
             "seal": 1,
             "source": "Calculus",
-            "dateAdded": "Mon Nov 21 11:31:21 PST 2022"
+            "dateAdded": "Sun Nov 27 13:38:40 PST 2022"
+        },
+        {
+            "nutrition": [],
+            "contributor": {"name": "Lolmon"},
+            "tex": "\\textrm{Who'll be the one to take care o' me now when darkness takes me?}",
+            "solutions": [],
+            "seal": 0,
+            "source": "Smon",
+            "dateAdded": "Sun Nov 27 13:39:26 PST 2022"
         }
     ],
     "day": 6
